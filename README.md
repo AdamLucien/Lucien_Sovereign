@@ -1,16 +1,90 @@
-# React + Vite
+<p align="center">
+  <img src="public/image1.svg" alt="Lucien Sovereign logo" width="140" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">Lucien Sovereign</h1>
 
-Currently, two official plugins are available:
+<p align="center">
+  A cinematic, multi-language landing page for a high-end consulting/sovereignty brand.
+  Built as a single-page React experience with Tailwind styling and a lightweight AI diagnostic widget.
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=06121a" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white" alt="ESLint" />
+  <img src="https://img.shields.io/badge/License-Proprietary-black" alt="License" />
+</p>
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What this is
 
-## Expanding the ESLint configuration
+Lucien Sovereign is a branded, high-contrast, single-page web experience with multi-language content and a guided, narrative user flow. It is optimized for bold typography, cinematic motion, and conversion into a direct contact channel.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- Multi-language UI (EN, CS, DE, UK, ZH)
+- Hero, audit, identity, capabilities, protocol, pricing, and contact flows
+- AI diagnostic panel (optional, via API key)
+- Tailwind-driven visual system and custom effects
+- Static deployment ready (no backend required)
+
+## Tech stack
+
+- React 19 + Vite 7
+- Tailwind CSS 4
+- Lucide React icons
+- ESLint
+
+## Quick start
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Environment variables
+
+Create a local `.env` file if you want the AI diagnostic panel to function:
+
+```bash
+VITE_GEMINI_API_KEY=your_api_key_here
+```
+
+Without it, the UI will still render, but the AI analysis response will show an error state.
+
+## Project structure
+
+```
+akl-sovereignty/
+  public/
+    image1.svg
+  src/
+    App.jsx
+    App.css
+    main.jsx
+    index.css
+```
+
+## Content and localization
+
+All copy is defined in `src/App.jsx` under `CONTENT_MAP`. This is the single source of truth for all supported languages.
+
+## Deployment
+
+The build output is generated in `dist/`. Deploy it to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages).
+
+## Notes
+
+- No backend required.
+- Keep `.env` out of version control (already ignored in `.gitignore`).
+
