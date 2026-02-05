@@ -255,9 +255,11 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedTier, setSelectedTier] = useState(null);
+  const [selectedTierIndex, setSelectedTierIndex] = useState(null);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState('idle');
+  const [purchaseError, setPurchaseError] = useState('');
   const [contactStatus, setContactStatus] = useState('idle');
   const [slotsLeft, setSlotsLeft] = useState(5);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -305,19 +307,45 @@ const App = () => {
     };
   }, []);
 
-  const openModal = (tier) => {
+  const openModal = (tier, tierIndex) => {
     setSelectedTier(tier);
+    setSelectedTierIndex(tierIndex);
     setSubmissionStatus('idle');
+    setPurchaseError('');
     setIsModalOpen(true);
   };
 
-  const handlePurchase = (e) => {
+  const handlePurchase = async (e) => {
     e.preventDefault();
+    if (!email.trim()) return;
+    if (selectedTierIndex === null || selectedTierIndex === undefined) {
+      setPurchaseError('SYSTEM ERROR: Tier selection missing.');
+      return;
+    }
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setPurchaseError('');
+
+    try {
+      const response = await fetch('/api/tiers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email.trim(),
+          tierIndex: selectedTierIndex,
+          lang,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setPurchaseError(data?.error || 'SYSTEM ERROR: Invite dispatch failed.');
+        return;
+      }
       setSubmissionStatus('success');
-    }, 1500);
+    } catch (error) {
+      setPurchaseError('SYSTEM ERROR: Network failure.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleContactSubmit = (e) => {
@@ -570,7 +598,7 @@ const App = () => {
             {t.pricing.tiers.map((tier, idx) => (
               <div key={idx} className={`relative p-10 flex flex-col justify-between group transition-all duration-300 rounded-2xl ${idx === 1 ? 'bg-white text-black border-none scale-105 z-20 shadow-[0_0_50px_rgba(99,102,241,0.2)]' : 'bg-[#0a0a0a] border border-white/10 text-white hover:border-indigo-500/50'}`}>
                 <div><div className="flex justify-between items-start mb-10"><div className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${idx === 1 ? 'bg-black text-white' : 'bg-white/10 text-white'}`}>{tier.subtitle}</div></div><h3 className="text-3xl font-bold mb-2 tracking-tight">{tier.name}</h3><div className={`text-2xl font-light mb-8 ${idx === 1 ? 'text-gray-600' : 'text-gray-400'}`}>{tier.price}</div><p className={`text-sm leading-relaxed mb-12 font-medium ${idx === 1 ? 'text-gray-800' : 'text-gray-400'}`}>{tier.desc}</p><ul className="space-y-5 mb-12">{tier.features.map((feat, i) => (<li key={i} className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider"><div className={`w-1.5 h-1.5 ${idx === 1 ? 'bg-black' : 'bg-indigo-500'}`}></div>{feat}</li>))}</ul></div>
-                <button onClick={() => openModal(tier)} className={`w-full py-5 font-bold uppercase tracking-widest text-xs transition-all border rounded-xl ${idx === 1 ? 'bg-black text-white border-black hover:bg-gray-800' : 'bg-transparent text-white border-white/20 hover:border-indigo-500 hover:text-indigo-400'}`}>{tier.btn}</button>
+                <button onClick={() => openModal(tier, idx)} className={`w-full py-5 font-bold uppercase tracking-widest text-xs transition-all border rounded-xl ${idx === 1 ? 'bg-black text-white border-black hover:bg-gray-800' : 'bg-transparent text-white border-white/20 hover:border-indigo-500 hover:text-indigo-400'}`}>{tier.btn}</button>
               </div>
             ))}
           </div>
@@ -661,6 +689,9 @@ const App = () => {
                 </div>
                 <form onSubmit={handlePurchase} className="space-y-6">
                   <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{t.modal.email}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-[#111] border border-white/10 py-4 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700 rounded-xl" placeholder={t.modal.placeholder} /></div>
+                  {purchaseError && (
+                    <div className="text-[10px] text-red-400 uppercase tracking-widest font-mono">{purchaseError}</div>
+                  )}
                   <button type="submit" disabled={loading} className="w-full bg-white text-black py-5 font-bold uppercase tracking-widest text-xs hover:bg-indigo-500 hover:text-white transition-colors flex justify-center items-center gap-2 rounded-xl">{loading ? <span className="animate-pulse">{t.modal.processing}</span> : <span>{t.modal.confirm}</span>}</button>
                 </form>
               </>
