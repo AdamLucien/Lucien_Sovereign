@@ -249,6 +249,8 @@ const CONTENT_MAP = {
   }
 };
 
+const SUPPORTED_LANGS = ['en', 'cs', 'de', 'uk', 'zh'];
+
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -269,6 +271,17 @@ const App = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const t = CONTENT_MAP[lang] || CONTENT_MAP['en'];
+
+  useEffect(() => {
+    const pathLang = window.location.pathname.split('/').filter(Boolean)[0];
+    if (SUPPORTED_LANGS.includes(pathLang)) {
+      setLang(pathLang);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -318,6 +331,11 @@ const App = () => {
           setContactStatus('idle');
       }, 2000);
     }, 1500);
+  };
+
+  const handleLangChange = (nextLang) => {
+    if (nextLang === lang) return;
+    window.location.href = `/${nextLang}/`;
   };
 
   const runAiAudit = async (e) => {
@@ -431,8 +449,8 @@ const App = () => {
              </div>
              
              <div className="flex items-center border border-white/10 rounded-sm overflow-hidden bg-black/50">
-                {['en', 'cs', 'de', 'uk', 'zh'].map((l) => (
-                    <button key={l} onClick={() => setLang(l)} className={`px-3 py-1.5 text-[10px] font-bold transition-colors uppercase ${lang === l ? 'bg-white text-black' : 'bg-transparent text-gray-500 hover:text-white'}`}>{l}</button>
+                {SUPPORTED_LANGS.map((l) => (
+                    <button key={l} onClick={() => handleLangChange(l)} className={`px-3 py-1.5 text-[10px] font-bold transition-colors uppercase ${lang === l ? 'bg-white text-black' : 'bg-transparent text-gray-500 hover:text-white'}`}>{l}</button>
                 ))}
              </div>
           </div>
@@ -629,10 +647,13 @@ const App = () => {
           </div>
 
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-6">
-            <div className="flex flex-wrap gap-x-8 gap-y-2">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                <span className="text-[9px] text-gray-700 uppercase tracking-widest">© 2026 {t.footer.rights}</span>
                <span className="text-[9px] text-gray-700 uppercase tracking-widest uppercase">Fair Use Applied</span>
                <span className="text-[9px] text-gray-700 uppercase tracking-widest uppercase">Quantum-Resistant Encryption</span>
+               <a href="https://lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-300 transition-colors">lucien.technology</a>
+               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-300 transition-colors">portal.lucien.technology</a>
+               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-300 transition-colors">archeon.lucien.technology</a>
             </div>
             <div className="text-[9px] text-gray-700 uppercase tracking-widest italic">
                {t.footer.legal}
