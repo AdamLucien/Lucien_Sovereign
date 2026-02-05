@@ -326,7 +326,7 @@ const App = () => {
     setPurchaseError('');
 
     try {
-      const response = await fetch('/api/tiers', {
+      const response = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -335,12 +335,12 @@ const App = () => {
           lang,
         }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        setPurchaseError(data?.error || 'SYSTEM ERROR: Invite dispatch failed.');
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data?.url) {
+        setPurchaseError(data?.error || 'SYSTEM ERROR: Checkout session failed.');
         return;
       }
-      setSubmissionStatus('success');
+      window.location.href = data.url;
     } catch (error) {
       setPurchaseError('SYSTEM ERROR: Network failure.');
     } finally {

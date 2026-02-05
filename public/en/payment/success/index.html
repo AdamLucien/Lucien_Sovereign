@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Payment Confirmed — Lucien</title>
+    <link rel="icon" type="image/png" href="/public/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(99,102,241,0.15), transparent 35%), #050505;
+        color: #e5e7eb;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .card {
+        max-width: 560px;
+        width: 100%;
+        background: #0b0b0b;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 28px;
+        padding: 40px;
+        box-shadow: 0 0 60px rgba(99,102,241,0.15);
+      }
+      .badge {
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(99,102,241,0.9);
+        font-weight: 700;
+      }
+      h1 {
+        margin: 18px 0 8px;
+        font-size: 32px;
+      }
+      p {
+        color: #9ca3af;
+        line-height: 1.6;
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 24px;
+        padding: 14px 22px;
+        background: #6366f1;
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 14px;
+      }
+      .hint {
+        margin-top: 16px;
+        font-size: 12px;
+        color: #6b7280;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="badge">Payment Confirmed</div>
+      <h1>Transmission secured.</h1>
+      <p>Your payment has been verified. You may now access the portal. If the invite email is delayed, use the direct login below.</p>
+      <a class="cta" href="https://portal.lucien.technology">Enter Portal</a>
+      <div class="hint">Redirecting in <span id="countdown">6</span>s…</div>
+    </div>
+    <script>
+      let remaining = 6;
+      const countdown = document.getElementById('countdown');
+      const interval = setInterval(() => {
+        remaining -= 1;
+        if (countdown) countdown.textContent = remaining;
+        if (remaining <= 0) {
+          clearInterval(interval);
+          window.location.href = 'https://portal.lucien.technology';
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
