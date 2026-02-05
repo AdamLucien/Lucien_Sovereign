@@ -345,21 +345,6 @@ const App = () => {
     setIsAnalyzing(true);
     setAiAnalysis('');
 
-    const getApiKey = () => {
-        try {
-            return import.meta.env.VITE_GEMINI_API_KEY || "";
-        } catch (e) {
-            return "";
-        }
-    };
-    const apiKey = getApiKey();
-    
-    if (!apiKey) {
-      setAiAnalysis("SYSTEM ERROR: Neural Link Disconnected (API Key Missing in .env).");
-      setIsAnalyzing(false);
-      return;
-    }
-    
     const prompt = `
       Act as Adam Karl Lucien, Chief Architect of ΛRCHΞON.
       Archetype: The Dragon. Surgical, direct, cold, uncompromising.
@@ -377,16 +362,15 @@ const App = () => {
     `;
 
     try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
-        }
-      );
+      const response = await fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
       const data = await response.json();
-      if (data.candidates && data.candidates[0].content) {
+      if (!response.ok) {
+        setAiAnalysis("SYSTEM ERROR: Neural Link Disconnected (Server Key Missing or API Failure).");
+      } else if (data.candidates && data.candidates[0].content) {
         setAiAnalysis(data.candidates[0].content.parts[0].text);
       } else {
         setAiAnalysis("Error: Signal lost in the void.");
