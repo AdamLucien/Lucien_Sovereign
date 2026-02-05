@@ -1,17 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Payment Confirmed — Lucien</title>
+    <title>Платіж підтверджено — Lucien</title>
     <link rel="icon" type="image/png" href="/public/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <style>
-      :root {
-        color-scheme: dark;
-      }
+      :root { color-scheme: dark; }
       body {
         margin: 0;
         background:
@@ -33,18 +31,6 @@
         border-radius: 32px;
         padding: 42px;
         box-shadow: 0 0 70px rgba(99, 102, 241, 0.15);
-        position: relative;
-        overflow: hidden;
-      }
-      .card::after {
-        content: '';
-        position: absolute;
-        top: -40%;
-        right: -20%;
-        width: 320px;
-        height: 320px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.12), transparent 70%);
-        pointer-events: none;
       }
       .label {
         font-size: 10px;
@@ -53,16 +39,8 @@
         color: rgba(99, 102, 241, 0.95);
         font-weight: 700;
       }
-      h1 {
-        margin: 18px 0 10px;
-        font-size: 32px;
-        letter-spacing: -0.02em;
-      }
-      p {
-        color: #a1a1aa;
-        line-height: 1.7;
-        font-size: 15px;
-      }
+      h1 { margin: 18px 0 10px; font-size: 32px; letter-spacing: -0.02em; }
+      p { color: #a1a1aa; line-height: 1.7; font-size: 15px; }
       .cta {
         display: inline-flex;
         align-items: center;
@@ -78,12 +56,8 @@
         font-weight: 700;
         border-radius: 14px;
         border: 1px solid transparent;
-        transition: all 0.2s ease;
       }
-      .cta:hover {
-        background: #4f46e5;
-        transform: translateY(-1px);
-      }
+      .cta:hover { background: #4f46e5; transform: translateY(-1px); }
       .hint {
         margin-top: 16px;
         font-size: 12px;
@@ -96,11 +70,11 @@
   </head>
   <body>
     <div class="card">
-      <div class="label">Payment Confirmed</div>
-      <h1>Transmission secured.</h1>
-      <p>Your payment has been verified. Your portal invite is being delivered. If the email is delayed, enter directly below.</p>
-      <a class="cta" href="https://portal.lucien.technology">Enter Portal</a>
-      <div class="hint">Redirecting in <span id="countdown">6</span>s</div>
+      <div class="label">Платіж підтверджено</div>
+      <h1>Передачу захищено.</h1>
+      <p>Платіж підтверджено. Запрошення до порталу надіслано. Якщо є затримка, увійдіть напряму нижче.</p>
+      <a class="cta" href="https://portal.lucien.technology">Увійти в портал</a>
+      <div class="hint">Перенаправлення через <span id="countdown">6</span>с</div>
     </div>
     <script>
       let remaining = 6;
