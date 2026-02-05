@@ -526,7 +526,7 @@ const App = () => {
             <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><User className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.identity.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.identity.title}</h3></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="group md:col-span-1 md:row-span-2 relative h-[520px] bg-[#0c0c0c] border border-white/10 p-8 flex flex-col justify-between hover:border-indigo-500/30 transition-all duration-300 rounded-3xl overflow-hidden">
-                    <div className="relative z-10 h-full flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0 pointer-events-none group-hover:pointer-events-auto">
+                    <div className="relative z-10 h-full flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0">
                         <div><div className="w-16 h-16 bg-white text-black flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,255,255,0.1)] rounded-2xl"><User className="w-8 h-8" /></div><h3 className="text-4xl text-white font-bold mb-2 tracking-tighter uppercase font-sans">ADAM<br/>KARL<br/>LUCIEN</h3><p className="text-xs text-indigo-400 uppercase tracking-widest mt-4">{t.identity.role}</p></div>
                         <div className="space-y-4 font-mono text-[10px] uppercase tracking-widest">
                             <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-600">{t.identity.id_card.status}</span><span className="text-white">{t.identity.id_card.active}</span></div>
@@ -536,6 +536,11 @@ const App = () => {
                     </div>
                     <div className="absolute inset-0 bg-[#080808] p-8 flex flex-col justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
                         {t.identity.bio.map((stat, idx) => (<div key={idx} className="border-l-2 border-indigo-500/50 pl-4"><div className="text-[10px] uppercase tracking-widest text-gray-500 mb-1 flex items-center gap-2">{idx === 0 && <Briefcase className="w-3 h-3" />} {idx === 1 && <Cpu className="w-3 h-3" />} {idx === 2 && <Globe className="w-3 h-3" />} {idx === 3 && <Zap className="w-3 h-3" />} {stat.label}</div><div className="text-sm font-bold text-white">{stat.value}</div></div>))}
+                        <div className="pt-4">
+                            <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 border border-indigo-500/40 text-indigo-300 text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-colors rounded-xl">
+                                AdamKarl Profile <ExternalLink className="w-3 h-3" />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div className="group md:col-span-2 bg-[#0c0c0c] border border-white/10 p-10 hover:border-indigo-500/30 transition-all duration-300 relative overflow-hidden rounded-3xl">
