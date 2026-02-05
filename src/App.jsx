@@ -264,6 +264,12 @@ const App = () => {
   const [slotsLeft, setSlotsLeft] = useState(5);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [lang, setLang] = useState('en');
+  const [identityFlipped, setIdentityFlipped] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+  const [activeCapability, setActiveCapability] = useState(null);
+  const [activeProtocol, setActiveProtocol] = useState(null);
+  const [activePricing, setActivePricing] = useState(null);
+  const [contactActive, setContactActive] = useState(false);
   
   const [logoError, setLogoError] = useState(false);
 
@@ -290,6 +296,18 @@ const App = () => {
       setSlotsLeft((prev) => (prev > 1 ? prev - 1 : 1));
     }, 45000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia('(hover: none)');
+    const update = () => setIsTouch(media.matches);
+    update();
+    if (media.addEventListener) {
+      media.addEventListener('change', update);
+      return () => media.removeEventListener('change', update);
+    }
+    media.addListener(update);
+    return () => media.removeListener(update);
   }, []);
 
   useEffect(() => {
@@ -525,8 +543,21 @@ const App = () => {
         <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><User className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.identity.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.identity.title}</h3></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="group md:col-span-1 md:row-span-2 relative h-[520px] bg-[#0c0c0c] border border-white/10 p-8 flex flex-col justify-between hover:border-indigo-500/30 transition-all duration-300 rounded-3xl overflow-hidden">
-                    <div className="relative z-10 h-full flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0">
+                <div
+                  className="group md:col-span-1 md:row-span-2 relative h-[520px] bg-[#0c0c0c] border border-white/10 p-8 flex flex-col justify-between hover:border-indigo-500/30 transition-all duration-300 rounded-3xl overflow-hidden cursor-pointer"
+                  onClick={() => setIdentityFlipped((prev) => !prev)}
+                  onMouseLeave={() => setIdentityFlipped(false)}
+                  aria-pressed={identityFlipped}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setIdentityFlipped((prev) => !prev);
+                    }
+                  }}
+                >
+                    <div className={`relative z-10 h-full flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0 ${identityFlipped ? 'opacity-0 pointer-events-none' : ''}`}>
                         <div><div className="w-16 h-16 bg-white text-black flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,255,255,0.1)] rounded-2xl"><User className="w-8 h-8" /></div><h3 className="text-4xl text-white font-bold mb-2 tracking-tighter uppercase font-sans">ADAM<br/>KARL<br/>LUCIEN</h3><p className="text-xs text-indigo-400 uppercase tracking-widest mt-4">{t.identity.role}</p></div>
                         <div className="space-y-4 font-mono text-[10px] uppercase tracking-widest">
                             <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-600">{t.identity.id_card.status}</span><span className="text-white">{t.identity.id_card.active}</span></div>
@@ -534,7 +565,7 @@ const App = () => {
                             <div className="flex justify-between"><span className="text-gray-600">{t.identity.id_card.id}</span><span className="text-white uppercase font-bold tracking-tighter text-indigo-400">ΛRCHΞON</span></div>
                         </div>
                     </div>
-                    <div className="absolute inset-0 bg-[#080808] p-8 flex flex-col justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
+                    <div className={`absolute inset-0 bg-[#080808] p-8 flex flex-col justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 ${identityFlipped ? 'opacity-100' : 'pointer-events-none'}`}>
                         {t.identity.bio.map((stat, idx) => (<div key={idx} className="border-l-2 border-indigo-500/50 pl-4"><div className="text-[10px] uppercase tracking-widest text-gray-500 mb-1 flex items-center gap-2">{idx === 0 && <Briefcase className="w-3 h-3" />} {idx === 1 && <Cpu className="w-3 h-3" />} {idx === 2 && <Globe className="w-3 h-3" />} {idx === 3 && <Zap className="w-3 h-3" />} {stat.label}</div><div className="text-sm font-bold text-white">{stat.value}</div></div>))}
                         <div className="pt-4">
                             <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 border border-indigo-500/40 text-indigo-300 text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-colors rounded-xl">
@@ -568,15 +599,22 @@ const App = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
                 {t.capabilities.items.map((item, idx) => (
-                    <div key={idx} className="group p-8 bg-[#0c0c0c] border border-white/5 rounded-3xl hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-1">
-                        <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-white/5 group-hover:border-indigo-500/20">
+                    <div
+                      key={idx}
+                      className={`group p-8 bg-[#0c0c0c] border border-white/5 rounded-3xl transition-all duration-500 hover:border-indigo-500/30 hover:-translate-y-1 ${isTouch && activeCapability === idx ? 'border-indigo-500/30 -translate-y-1' : ''}`}
+                      onClick={() => {
+                        if (!isTouch) return;
+                        setActiveCapability((prev) => (prev === idx ? null : idx));
+                      }}
+                    >
+                        <div className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 transition-transform border border-white/5 group-hover:scale-110 group-hover:border-indigo-500/20 ${isTouch && activeCapability === idx ? 'scale-110 border-indigo-500/20' : ''}`}>
                             {item.icon === 'layers' && <Layers className="w-6 h-6 text-white" />}
                             {item.icon === 'cpu' && <Cpu className="w-6 h-6 text-white" />}
                             {item.icon === 'shield' && <ShieldCheck className="w-6 h-6 text-white" />}
                             {item.icon === 'target' && <Target className="w-6 h-6 text-white" />}
                         </div>
                         <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-4 leading-tight">{item.title}</h4>
-                        <p className="text-gray-500 text-xs leading-relaxed font-light group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                        <p className={`text-gray-500 text-xs leading-relaxed font-light group-hover:text-gray-300 transition-colors ${isTouch && activeCapability === idx ? 'text-gray-300' : ''}`}>{item.desc}</p>
                     </div>
                 ))}
             </div>
@@ -589,7 +627,19 @@ const App = () => {
             <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><GitCommit className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.modus.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.modus.title}</h3></div>
             <div className="grid md:grid-cols-3 gap-0 border-t border-l border-white/10">
                 {[{ step: "01", title: t.modus.s1_title, desc: t.modus.s1_desc, icon: <Scan className="w-5 h-5" /> }, { step: "02", title: t.modus.s2_title, desc: t.modus.s2_desc, icon: <Layers className="w-5 h-5" /> }, { step: "03", title: t.modus.s3_title, desc: t.modus.s3_desc, icon: <Crosshair className="w-5 h-5" /> }].map((item, idx) => (
-                    <div key={idx} className="group border-r border-b border-white/10 p-12 hover:bg-white/5 transition-colors relative"><div className="absolute top-6 right-6 text-gray-800 font-bold text-6xl opacity-20 group-hover:opacity-10 transition-opacity select-none">{item.step}</div><div className="mb-8 text-white group-hover:text-indigo-400 transition-colors">{item.icon}</div><h3 className="text-lg font-bold text-white mb-4 tracking-widest uppercase">{item.title}</h3><p className="text-sm text-gray-400 leading-relaxed font-light">{item.desc}</p></div>
+                    <div
+                      key={idx}
+                      className={`group border-r border-b border-white/10 p-12 transition-colors relative hover:bg-white/5 ${isTouch && activeProtocol === idx ? 'bg-white/5' : ''}`}
+                      onClick={() => {
+                        if (!isTouch) return;
+                        setActiveProtocol((prev) => (prev === idx ? null : idx));
+                      }}
+                    >
+                      <div className={`absolute top-6 right-6 text-gray-800 font-bold text-6xl opacity-20 transition-opacity select-none group-hover:opacity-10 ${isTouch && activeProtocol === idx ? 'opacity-10' : ''}`}>{item.step}</div>
+                      <div className={`mb-8 text-white group-hover:text-indigo-400 transition-colors ${isTouch && activeProtocol === idx ? 'text-indigo-400' : ''}`}>{item.icon}</div>
+                      <h3 className="text-lg font-bold text-white mb-4 tracking-widest uppercase">{item.title}</h3>
+                      <p className="text-sm text-gray-400 leading-relaxed font-light">{item.desc}</p>
+                    </div>
                 ))}
             </div>
         </div>
@@ -601,7 +651,14 @@ const App = () => {
           <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><Shield className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.pricing.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.pricing.title}</h3></div>
           <div className="grid lg:grid-cols-3 gap-8">
             {t.pricing.tiers.map((tier, idx) => (
-              <div key={idx} className={`relative p-10 flex flex-col justify-between group transition-all duration-300 rounded-2xl ${idx === 1 ? 'bg-white text-black border-none scale-105 z-20 shadow-[0_0_50px_rgba(99,102,241,0.2)]' : 'bg-[#0a0a0a] border border-white/10 text-white hover:border-indigo-500/50'}`}>
+              <div
+                key={idx}
+                className={`relative p-10 flex flex-col justify-between group transition-all duration-300 rounded-2xl ${idx === 1 ? 'bg-white text-black border-none scale-105 z-20 shadow-[0_0_50px_rgba(99,102,241,0.2)]' : 'bg-[#0a0a0a] border border-white/10 text-white hover:border-indigo-500/50'} ${isTouch && activePricing === idx && idx !== 1 ? 'border-indigo-500/50' : ''}`}
+                onClick={() => {
+                  if (!isTouch) return;
+                  setActivePricing((prev) => (prev === idx ? null : idx));
+                }}
+              >
                 <div><div className="flex justify-between items-start mb-10"><div className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${idx === 1 ? 'bg-black text-white' : 'bg-white/10 text-white'}`}>{tier.subtitle}</div></div><h3 className="text-3xl font-bold mb-2 tracking-tight">{tier.name}</h3><div className={`text-2xl font-light mb-8 ${idx === 1 ? 'text-gray-600' : 'text-gray-400'}`}>{tier.price}</div><p className={`text-sm leading-relaxed mb-12 font-medium ${idx === 1 ? 'text-gray-800' : 'text-gray-400'}`}>{tier.desc}</p><ul className="space-y-5 mb-12">{tier.features.map((feat, i) => (<li key={i} className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider"><div className={`w-1.5 h-1.5 ${idx === 1 ? 'bg-black' : 'bg-indigo-500'}`}></div>{feat}</li>))}</ul></div>
                 <button onClick={() => openModal(tier, idx)} className={`w-full py-5 font-bold uppercase tracking-widest text-xs transition-all border rounded-xl ${idx === 1 ? 'bg-black text-white border-black hover:bg-gray-800' : 'bg-transparent text-white border-white/20 hover:border-indigo-500 hover:text-indigo-400'}`}>{tier.btn}</button>
               </div>
@@ -612,8 +669,14 @@ const App = () => {
 
       <section className="py-24 px-6 border-t border-white/10 bg-[#020405] z-10 relative">
         <div className="max-w-[1000px] mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-12 p-12 border border-white/10 bg-[#050505] relative overflow-hidden group rounded-3xl">
-                <div className="absolute inset-0 bg-indigo-900/5 translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
+            <div
+              className="flex flex-col md:flex-row justify-between items-center gap-12 p-12 border border-white/10 bg-[#050505] relative overflow-hidden group rounded-3xl"
+              onClick={() => {
+                if (!isTouch) return;
+                setContactActive((prev) => !prev);
+              }}
+            >
+                <div className={`absolute inset-0 bg-indigo-900/5 translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out ${isTouch && contactActive ? 'translate-x-0' : ''}`}></div>
                 <div className="relative z-10 text-center md:text-left"><h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-3"><Lock className="w-5 h-5 text-indigo-500" />{t.contact.title}</h3><p className="text-gray-400 text-sm max-w-md">{t.contact.desc}</p></div>
                 <div className="relative z-10 flex gap-6">
                     <button onClick={() => setIsContactModalOpen(true)} className="p-4 border border-white/20 bg-black hover:border-indigo-500 hover:text-indigo-400 text-white transition-all rounded-xl group/icon cursor-pointer"><Mail className="w-5 h-5 group-hover/icon:scale-110 transition-transform" /></button>
