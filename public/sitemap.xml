@@ -1,18 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lucien.technology/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucien.technology/en/" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://lucien.technology/cs/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://lucien.technology/de/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://lucien.technology/uk/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lucien.technology/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucien.technology/en/" />
   </url>
   <url>
     <loc>https://lucien.technology/cs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucien.technology/en/" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://lucien.technology/cs/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://lucien.technology/de/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://lucien.technology/uk/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lucien.technology/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucien.technology/en/" />
   </url>
   <url>
     <loc>https://lucien.technology/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucien.technology/en/" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://lucien.technology/cs/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://lucien.technology/de/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://lucien.technology/uk/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lucien.technology/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucien.technology/en/" />
   </url>
   <url>
     <loc>https://lucien.technology/uk/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucien.technology/en/" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://lucien.technology/cs/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://lucien.technology/de/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://lucien.technology/uk/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lucien.technology/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucien.technology/en/" />
   </url>
   <url>
     <loc>https://lucien.technology/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lucien.technology/en/" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://lucien.technology/cs/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://lucien.technology/de/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://lucien.technology/uk/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lucien.technology/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lucien.technology/en/" />
   </url>
 </urlset>
