@@ -1,3 +1,4 @@
+# robots.txt for lucien.technology
 User-agent: *
 Allow: /
 
