@@ -679,8 +679,8 @@ const App = () => {
                 <div className={`absolute inset-0 bg-indigo-900/5 translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out ${isTouch && contactActive ? 'translate-x-0' : ''}`}></div>
                 <div className="relative z-10 text-center md:text-left"><h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-3"><Lock className="w-5 h-5 text-indigo-500" />{t.contact.title}</h3><p className="text-gray-400 text-sm max-w-md">{t.contact.desc}</p></div>
                 <div className="relative z-10 flex gap-6">
-                    <button onClick={() => setIsContactModalOpen(true)} className="p-4 border border-white/20 bg-black hover:border-indigo-500 hover:text-indigo-400 text-white transition-all rounded-xl group/icon cursor-pointer"><Mail className="w-5 h-5 group-hover/icon:scale-110 transition-transform" /></button>
-                    <a href="https://www.linkedin.com/in/adam-karl-lucien" target="_blank" rel="noopener noreferrer" className="p-4 border border-white/20 bg-black hover:border-indigo-500 hover:text-indigo-400 text-white transition-all rounded-xl group/icon"><Linkedin className="w-5 h-5 group-hover/icon:scale-110 transition-transform" /></a>
+                    <button aria-label="Open secure contact channel" onClick={() => setIsContactModalOpen(true)} className="p-4 border border-white/20 bg-black hover:border-indigo-500 hover:text-indigo-400 text-white transition-all rounded-xl group/icon cursor-pointer"><Mail className="w-5 h-5 group-hover/icon:scale-110 transition-transform" /></button>
+                    <a aria-label="Open LinkedIn profile" href="https://www.linkedin.com/in/adam-karl-lucien" target="_blank" rel="noopener noreferrer" className="p-4 border border-white/20 bg-black hover:border-indigo-500 hover:text-indigo-400 text-white transition-all rounded-xl group/icon"><Linkedin className="w-5 h-5 group-hover/icon:scale-110 transition-transform" /></a>
                 </div>
             </div>
         </div>
