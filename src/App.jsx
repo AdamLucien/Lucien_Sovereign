@@ -464,7 +464,7 @@ const App = () => {
               )}
             </div>
             <div className="flex flex-col justify-center">
-               <span className="text-[9px] uppercase tracking-[0.3em] text-gray-500 font-mono">{t.nav.role}</span>
+               <span className="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-mono">{t.nav.role}</span>
                <span className="text-sm font-bold tracking-widest text-white uppercase font-sans">LUCIEN</span>
             </div>
           </div>
@@ -480,7 +480,7 @@ const App = () => {
              
              <div className="flex items-center border border-white/10 rounded-sm overflow-hidden bg-black/50">
                 {SUPPORTED_LANGS.map((l) => (
-                    <button key={l} onClick={() => handleLangChange(l)} className={`px-3 py-1.5 text-[10px] font-bold transition-colors uppercase ${lang === l ? 'bg-white text-black' : 'bg-transparent text-gray-500 hover:text-white'}`}>{l}</button>
+                    <button key={l} onClick={() => handleLangChange(l)} className={`px-3 py-1.5 text-[10px] font-bold transition-colors uppercase ${lang === l ? 'bg-white text-black' : 'bg-transparent text-gray-400 hover:text-white'}`}>{l}</button>
                 ))}
              </div>
           </div>
@@ -500,7 +500,7 @@ const App = () => {
       <section id="ai-scanner" className="py-32 px-6 bg-[#050505] border-b border-white/10 relative z-10">
         <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-24">
-                <h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><Scan className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.audit.phase}</h2>
+                <h2 className="text-xs font-mono text-gray-400 tracking-[0.4em] uppercase mb-4"><Scan className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.audit.phase}</h2>
                 <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.audit.title}</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-6 items-stretch">
@@ -525,9 +525,9 @@ const App = () => {
                 </div>
                 <div id="ai-results" className="rounded-3xl bg-[#0c0c0c] border border-white/10 p-8 flex flex-col hover:border-white/20 transition-all duration-300 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-8 opacity-5"><Terminal className="w-48 h-48 text-white" /></div>
-                    <div className="flex justify-between items-center pb-4 border-b border-white/10 mb-6 relative z-10"><span className="text-[10px] uppercase tracking-widest text-gray-500 font-mono">{t.audit.outputHeader}</span><div className="flex gap-2"><div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div></div></div>
+                    <div className="flex justify-between items-center pb-4 border-b border-white/10 mb-6 relative z-10"><span className="text-[10px] uppercase tracking-widest text-gray-400 font-mono">{t.audit.outputHeader}</span><div className="flex gap-2"><div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div></div></div>
                     <div className="relative flex-grow font-mono text-sm z-10 flex flex-col">
-                        {!aiAnalysis && !isAnalyzing && (<div className="text-gray-800 flex-grow flex flex-col items-center justify-center text-center space-y-4 min-h-[250px]"><p className="opacity-50 tracking-widest text-xs uppercase">{t.audit.waiting}</p></div>)}
+                        {!aiAnalysis && !isAnalyzing && (<div className="text-gray-500 flex-grow flex flex-col items-center justify-center text-center space-y-4 min-h-[250px]"><p className="opacity-60 tracking-widest text-xs uppercase">{t.audit.waiting}</p></div>)}
                         {isAnalyzing && (<div className="space-y-4 text-indigo-400/70 flex-grow pt-10"><div className="flex items-center gap-3 border-l border-indigo-500/20 pl-4"><div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div> &gt; {t.audit.connecting}</div><div className="flex items-center gap-3 border-l border-indigo-500/20 pl-4 delay-75"><div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div> &gt; {t.audit.scanning}</div><div className="flex items-center gap-3 border-l border-indigo-500/20 pl-4 delay-150 text-white animate-pulse"><div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div> &gt; {t.audit.calculating}</div></div>)}
                         {aiAnalysis && (
                             <div className="animate-[fadeIn_0.3s_ease-out] flex flex-col h-full"><div className="text-gray-300 space-y-6 mb-8 leading-relaxed flex-grow overflow-y-auto max-h-[400px] pr-2 custom-scrollbar"><p className="text-white font-bold bg-indigo-900/30 inline-block px-2 py-1 text-xs border border-indigo-500/30 rounded-sm">&gt; {t.audit.complete}</p><p className="whitespace-pre-line border-l-2 border-indigo-500/20 pl-6">{aiAnalysis}</p></div><div className="p-6 bg-white/5 border border-white/10 rounded-xl flex flex-col items-center text-center gap-3 mt-auto"><h4 className="text-white font-bold uppercase tracking-widest text-[10px]">{t.audit.symptom}</h4><button onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })} className="w-full py-3 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors rounded-lg">{t.audit.deploy}</button></div></div>
@@ -541,7 +541,7 @@ const App = () => {
       {/* PHASE 02: IDENTITY */}
       <section className="py-40 px-6 border-b border-white/10 relative overflow-hidden bg-[#050505] z-10">
         <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><User className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.identity.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.identity.title}</h3></div>
+            <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-400 tracking-[0.4em] uppercase mb-4"><User className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.identity.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.identity.title}</h3></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div
                   className="group md:col-span-1 md:row-span-2 relative h-[520px] bg-[#0c0c0c] border border-white/10 p-8 flex flex-col justify-between hover:border-indigo-500/30 transition-all duration-300 rounded-3xl overflow-hidden cursor-pointer"
@@ -560,13 +560,13 @@ const App = () => {
                     <div className={`relative z-10 h-full flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0 ${identityFlipped ? 'opacity-0 pointer-events-none' : ''}`}>
                         <div><div className="w-16 h-16 bg-white text-black flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,255,255,0.1)] rounded-2xl"><User className="w-8 h-8" /></div><h3 className="text-4xl text-white font-bold mb-2 tracking-tighter uppercase font-sans">ADAM<br/>KARL<br/>LUCIEN</h3><p className="text-xs text-indigo-400 uppercase tracking-widest mt-4">{t.identity.role}</p></div>
                         <div className="space-y-4 font-mono text-[10px] uppercase tracking-widest">
-                            <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-600">{t.identity.id_card.status}</span><span className="text-white">{t.identity.id_card.active}</span></div>
-                            <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-600">{t.identity.id_card.base}</span><span className="text-white">{t.identity.id_card.prague}</span></div>
-                            <div className="flex justify-between"><span className="text-gray-600">{t.identity.id_card.id}</span><span className="text-white uppercase font-bold tracking-tighter text-indigo-400">ΛRCHΞON</span></div>
+                            <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">{t.identity.id_card.status}</span><span className="text-white">{t.identity.id_card.active}</span></div>
+                            <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">{t.identity.id_card.base}</span><span className="text-white">{t.identity.id_card.prague}</span></div>
+                            <div className="flex justify-between"><span className="text-gray-400">{t.identity.id_card.id}</span><span className="text-white uppercase font-bold tracking-tighter text-indigo-400">ΛRCHΞON</span></div>
                         </div>
                     </div>
                     <div className={`absolute inset-0 bg-[#080808] p-8 flex flex-col justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 ${identityFlipped ? 'opacity-100' : 'pointer-events-none'}`}>
-                        {t.identity.bio.map((stat, idx) => (<div key={idx} className="border-l-2 border-indigo-500/50 pl-4"><div className="text-[10px] uppercase tracking-widest text-gray-500 mb-1 flex items-center gap-2">{idx === 0 && <Briefcase className="w-3 h-3" />} {idx === 1 && <Cpu className="w-3 h-3" />} {idx === 2 && <Globe className="w-3 h-3" />} {idx === 3 && <Zap className="w-3 h-3" />} {stat.label}</div><div className="text-sm font-bold text-white">{stat.value}</div></div>))}
+                        {t.identity.bio.map((stat, idx) => (<div key={idx} className="border-l-2 border-indigo-500/50 pl-4"><div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1 flex items-center gap-2">{idx === 0 && <Briefcase className="w-3 h-3" />} {idx === 1 && <Cpu className="w-3 h-3" />} {idx === 2 && <Globe className="w-3 h-3" />} {idx === 3 && <Zap className="w-3 h-3" />} {stat.label}</div><div className="text-sm font-bold text-white">{stat.value}</div></div>))}
                         <div className="pt-4">
                             <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 border border-indigo-500/40 text-indigo-300 text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-colors rounded-xl">
                                 AdamKarl Profile <ExternalLink className="w-3 h-3" />
@@ -576,12 +576,12 @@ const App = () => {
                 </div>
                 <div className="group md:col-span-2 bg-[#0c0c0c] border border-white/10 p-10 hover:border-indigo-500/30 transition-all duration-300 relative overflow-hidden rounded-3xl">
                     <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity"><Activity className="w-40 h-40 text-white" /></div>
-                    <div className="flex items-center gap-2 mb-6"><Eye className="w-4 h-4 text-gray-500" /><h4 className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">01 // {t.identity.p1_title}</h4></div>
+                    <div className="flex items-center gap-2 mb-6"><Eye className="w-4 h-4 text-gray-400" /><h4 className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em]">01 // {t.identity.p1_title}</h4></div>
                     <h3 className="text-2xl text-white font-medium leading-relaxed max-w-lg mb-6">"{t.identity.p1_quote}"</h3>
                     <p className="text-gray-400 font-light leading-relaxed max-w-md">{t.identity.p1_desc}</p>
                 </div>
-                <div className="group bg-[#0c0c0c] border border-white/10 p-10 hover:border-indigo-500/30 transition-all duration-300 rounded-3xl"><div className="flex items-center gap-2 mb-6"><Hexagon className="w-4 h-4 text-gray-500" /><h4 className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">02 // {t.identity.p2_title}</h4></div><h3 className="text-xl text-white font-bold mb-4">{t.identity.p2_head}</h3><p className="text-sm text-gray-400 leading-relaxed">{t.identity.p2_desc}</p></div>
-                <div className="group bg-[#0c0c0c] border border-white/10 p-10 hover:border-indigo-500/30 transition-all duration-300 rounded-3xl"><div className="flex items-center gap-2 mb-6"><FileText className="w-4 h-4 text-gray-500" /><h4 className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">03 // {t.identity.p3_title}</h4></div><h3 className="text-xl text-white font-bold mb-4">{t.identity.p3_head}</h3><p className="text-sm text-gray-400 leading-relaxed">{t.identity.p3_desc}</p></div>
+                <div className="group bg-[#0c0c0c] border border-white/10 p-10 hover:border-indigo-500/30 transition-all duration-300 rounded-3xl"><div className="flex items-center gap-2 mb-6"><Hexagon className="w-4 h-4 text-gray-400" /><h4 className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em]">02 // {t.identity.p2_title}</h4></div><h3 className="text-xl text-white font-bold mb-4">{t.identity.p2_head}</h3><p className="text-sm text-gray-300 leading-relaxed">{t.identity.p2_desc}</p></div>
+                <div className="group bg-[#0c0c0c] border border-white/10 p-10 hover:border-indigo-500/30 transition-all duration-300 rounded-3xl"><div className="flex items-center gap-2 mb-6"><FileText className="w-4 h-4 text-gray-400" /><h4 className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em]">03 // {t.identity.p3_title}</h4></div><h3 className="text-xl text-white font-bold mb-4">{t.identity.p3_head}</h3><p className="text-sm text-gray-300 leading-relaxed">{t.identity.p3_desc}</p></div>
             </div>
         </div>
       </section>
@@ -590,7 +590,7 @@ const App = () => {
       <section className="py-32 px-6 border-b border-white/10 bg-[#030303] z-10 relative">
         <div className="max-w-[1200px] mx-auto text-center">
             <div className="mb-24 text-center">
-                <h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4">
+                <h2 className="text-xs font-mono text-gray-400 tracking-[0.4em] uppercase mb-4">
                     <Workflow className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />
                     {t.capabilities.phase}
                 </h2>
@@ -614,7 +614,7 @@ const App = () => {
                             {item.icon === 'target' && <Target className="w-6 h-6 text-white" />}
                         </div>
                         <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-4 leading-tight">{item.title}</h4>
-                        <p className={`text-gray-500 text-xs leading-relaxed font-light group-hover:text-gray-300 transition-colors ${isTouch && activeCapability === idx ? 'text-gray-300' : ''}`}>{item.desc}</p>
+                        <p className={`text-gray-400 text-xs leading-relaxed font-light group-hover:text-gray-200 transition-colors ${isTouch && activeCapability === idx ? 'text-gray-200' : ''}`}>{item.desc}</p>
                     </div>
                 ))}
             </div>
@@ -624,7 +624,7 @@ const App = () => {
       {/* PHASE 04: THE PROTOCOL */}
       <section className="py-32 px-6 border-b border-white/10 bg-[#020405] z-10 relative">
         <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><GitCommit className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.modus.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.modus.title}</h3></div>
+            <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-400 tracking-[0.4em] uppercase mb-4"><GitCommit className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.modus.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.modus.title}</h3></div>
             <div className="grid md:grid-cols-3 gap-0 border-t border-l border-white/10">
                 {[{ step: "01", title: t.modus.s1_title, desc: t.modus.s1_desc, icon: <Scan className="w-5 h-5" /> }, { step: "02", title: t.modus.s2_title, desc: t.modus.s2_desc, icon: <Layers className="w-5 h-5" /> }, { step: "03", title: t.modus.s3_title, desc: t.modus.s3_desc, icon: <Crosshair className="w-5 h-5" /> }].map((item, idx) => (
                     <div
@@ -635,7 +635,7 @@ const App = () => {
                         setActiveProtocol((prev) => (prev === idx ? null : idx));
                       }}
                     >
-                      <div className={`absolute top-6 right-6 text-gray-800 font-bold text-6xl opacity-20 transition-opacity select-none group-hover:opacity-10 ${isTouch && activeProtocol === idx ? 'opacity-10' : ''}`}>{item.step}</div>
+                      <div className={`absolute top-6 right-6 text-gray-500 font-bold text-6xl opacity-20 transition-opacity select-none group-hover:opacity-10 ${isTouch && activeProtocol === idx ? 'opacity-10' : ''}`}>{item.step}</div>
                       <div className={`mb-8 text-white group-hover:text-indigo-400 transition-colors ${isTouch && activeProtocol === idx ? 'text-indigo-400' : ''}`}>{item.icon}</div>
                       <h3 className="text-lg font-bold text-white mb-4 tracking-widest uppercase">{item.title}</h3>
                       <p className="text-sm text-gray-400 leading-relaxed font-light">{item.desc}</p>
@@ -648,7 +648,7 @@ const App = () => {
       {/* PHASE 05: ENGAGEMENT */}
       <section id="pricing" className="py-40 px-6 z-10 relative">
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-500 tracking-[0.4em] uppercase mb-4"><Shield className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.pricing.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.pricing.title}</h3></div>
+          <div className="text-center mb-24"><h2 className="text-xs font-mono text-gray-400 tracking-[0.4em] uppercase mb-4"><Shield className="w-4 h-4 inline-block mr-2 mb-1 text-indigo-500" />{t.pricing.phase}</h2><h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.pricing.title}</h3></div>
           <div className="grid lg:grid-cols-3 gap-8">
             {t.pricing.tiers.map((tier, idx) => (
               <div
@@ -659,7 +659,7 @@ const App = () => {
                   setActivePricing((prev) => (prev === idx ? null : idx));
                 }}
               >
-                <div><div className="flex justify-between items-start mb-10"><div className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${idx === 1 ? 'bg-black text-white' : 'bg-white/10 text-white'}`}>{tier.subtitle}</div></div><h3 className="text-3xl font-bold mb-2 tracking-tight">{tier.name}</h3><div className={`text-2xl font-light mb-8 ${idx === 1 ? 'text-gray-600' : 'text-gray-400'}`}>{tier.price}</div><p className={`text-sm leading-relaxed mb-12 font-medium ${idx === 1 ? 'text-gray-800' : 'text-gray-400'}`}>{tier.desc}</p><ul className="space-y-5 mb-12">{tier.features.map((feat, i) => (<li key={i} className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider"><div className={`w-1.5 h-1.5 ${idx === 1 ? 'bg-black' : 'bg-indigo-500'}`}></div>{feat}</li>))}</ul></div>
+                <div><div className="flex justify-between items-start mb-10"><div className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${idx === 1 ? 'bg-black text-white' : 'bg-white/10 text-white'}`}>{tier.subtitle}</div></div><h3 className="text-3xl font-bold mb-2 tracking-tight">{tier.name}</h3><div className={`text-2xl font-light mb-8 ${idx === 1 ? 'text-gray-700' : 'text-gray-300'}`}>{tier.price}</div><p className={`text-sm leading-relaxed mb-12 font-medium ${idx === 1 ? 'text-gray-700' : 'text-gray-300'}`}>{tier.desc}</p><ul className="space-y-5 mb-12">{tier.features.map((feat, i) => (<li key={i} className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider"><div className={`w-1.5 h-1.5 ${idx === 1 ? 'bg-black' : 'bg-indigo-500'}`}></div>{feat}</li>))}</ul></div>
                 <button onClick={() => openModal(tier, idx)} className={`w-full py-5 font-bold uppercase tracking-widest text-xs transition-all border rounded-xl ${idx === 1 ? 'bg-black text-white border-black hover:bg-gray-800' : 'bg-transparent text-white border-white/20 hover:border-indigo-500 hover:text-indigo-400'}`}>{tier.btn}</button>
               </div>
             ))}
@@ -687,7 +687,7 @@ const App = () => {
       </section>
 
       <footer className="py-16 px-6 bg-black z-10 relative border-t border-white/10 overflow-hidden text-sans">
-        <div className="absolute -bottom-4 -right-4 text-[120px] font-bold text-white/[0.02] select-none pointer-events-none tracking-tighter uppercase">LUCIEN</div>
+        <div className="absolute -bottom-4 -right-4 text-[120px] font-bold text-white/[0.04] select-none pointer-events-none tracking-tighter uppercase">LUCIEN</div>
         
         <div className="max-w-[1200px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-12">
@@ -696,7 +696,7 @@ const App = () => {
                 <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">Λ</div>
                 <span className="text-2xl font-bold tracking-tighter text-white">ΛRCHΞON</span>
               </div>
-              <div className="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-2">{t.identity.role} • Est. 2026</div>
+              <div className="text-[10px] text-gray-400 font-mono uppercase tracking-widest mb-2">{t.identity.role} • Est. 2026</div>
               <a 
                 href="https://archeon.lucien.technology" 
                 target="_blank" 
@@ -710,32 +710,32 @@ const App = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
                <div className="space-y-4">
                   <h4 className="text-[10px] font-mono uppercase text-gray-400 tracking-[0.2em]">{t.identity.id_card.status}</h4>
-                  <div className="flex items-center gap-2 text-[10px] text-gray-600 uppercase font-bold tracking-widest">
+                  <div className="flex items-center gap-2 text-[10px] text-gray-400 uppercase font-bold tracking-widest">
                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                      {t.identity.id_card.active}
                   </div>
                </div>
                <div className="space-y-4">
                   <h4 className="text-[10px] font-mono uppercase text-gray-400 tracking-[0.2em]">{t.identity.id_card.base}</h4>
-                  <div className="text-[10px] text-gray-600 uppercase font-bold tracking-widest">{t.identity.id_card.prague}</div>
+                  <div className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">{t.identity.id_card.prague}</div>
                </div>
                <div className="space-y-4 hidden md:block">
                   <h4 className="text-[10px] font-mono uppercase text-gray-400 tracking-[0.2em]">{t.identity.id_card.id}</h4>
-                  <div className="text-[10px] text-gray-600 uppercase font-bold tracking-widest">{t.identity.id_card.code}</div>
+                  <div className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">{t.identity.id_card.code}</div>
                </div>
             </div>
           </div>
 
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-6">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-               <span className="text-[9px] text-gray-700 uppercase tracking-widest">© 2026 {t.footer.rights}</span>
-               <span className="text-[9px] text-gray-700 uppercase tracking-widest uppercase">Fair Use Applied</span>
-               <span className="text-[9px] text-gray-700 uppercase tracking-widest uppercase">Quantum-Resistant Encryption</span>
-               <a href="https://lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-300 transition-colors">lucien.technology</a>
-               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-300 transition-colors">portal.lucien.technology</a>
-               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-300 transition-colors">archeon.lucien.technology</a>
+               <span className="text-[9px] text-gray-500 uppercase tracking-widest">© 2026 {t.footer.rights}</span>
+               <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Fair Use Applied</span>
+               <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Quantum-Resistant Encryption</span>
+               <a href="https://lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-400 uppercase tracking-widest hover:text-gray-200 transition-colors inline-flex items-center min-h-[32px] px-2">lucien.technology</a>
+               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-400 uppercase tracking-widest hover:text-gray-200 transition-colors inline-flex items-center min-h-[32px] px-2">portal.lucien.technology</a>
+               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-[9px] text-gray-400 uppercase tracking-widest hover:text-gray-200 transition-colors inline-flex items-center min-h-[32px] px-2">archeon.lucien.technology</a>
             </div>
-            <div className="text-[9px] text-gray-700 uppercase tracking-widest italic">
+            <div className="text-[9px] text-gray-500 uppercase tracking-widest italic">
                {t.footer.legal}
             </div>
           </div>
@@ -746,7 +746,7 @@ const App = () => {
       {isModalOpen && selectedTier && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl">
           <div className="bg-[#0a0a0a] w-full max-w-md border border-white/20 p-10 relative shadow-[0_0_50px_rgba(99,102,241,0.15)] rounded-3xl">
-            <button onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors"><X className="w-5 h-5" /></button>
+            <button onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors"><X className="w-5 h-5" /></button>
             
             {submissionStatus === 'idle' ? (
               <>
@@ -756,7 +756,7 @@ const App = () => {
                   <div className="text-xl text-gray-400">{selectedTier.price}</div>
                 </div>
                 <form onSubmit={handlePurchase} className="space-y-6">
-                  <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{t.modal.email}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-[#111] border border-white/10 py-4 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700 rounded-xl" placeholder={t.modal.placeholder} /></div>
+                  <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{t.modal.email}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-[#111] border border-white/10 py-4 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-600 rounded-xl" placeholder={t.modal.placeholder} /></div>
                   {purchaseError && (
                     <div className="text-[10px] text-red-400 uppercase tracking-widest font-mono">{purchaseError}</div>
                   )}
@@ -781,7 +781,7 @@ const App = () => {
                             </div>
                             <div>
                                 <h4 className="text-[10px] uppercase tracking-widest text-white font-bold mb-1">{step.head}</h4>
-                                <p className="text-[11px] text-gray-500 leading-relaxed">{step.desc}</p>
+                                <p className="text-[11px] text-gray-400 leading-relaxed">{step.desc}</p>
                             </div>
                         </div>
                     ))}
@@ -790,7 +790,7 @@ const App = () => {
                  <button onClick={() => setIsModalOpen(false)} className="w-full py-4 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all rounded-xl">{t.modal.close}</button>
               </div>
             )}
-            <div className="mt-8 flex justify-center items-center gap-2 text-[10px] text-gray-600 uppercase tracking-widest"><Fingerprint className="w-3 h-3" />{t.modal.encrypted}</div>
+            <div className="mt-8 flex justify-center items-center gap-2 text-[10px] text-gray-400 uppercase tracking-widest"><Fingerprint className="w-3 h-3" />{t.modal.encrypted}</div>
           </div>
         </div>
       )}
@@ -798,14 +798,14 @@ const App = () => {
       {isContactModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl">
           <div className="bg-[#0a0a0a] w-full max-w-md border border-white/20 p-10 relative shadow-[0_0_50px_rgba(99,102,241,0.15)] rounded-3xl">
-            <button onClick={() => setIsContactModalOpen(false)} className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors"><X className="w-5 h-5" /></button>
+            <button onClick={() => setIsContactModalOpen(false)} className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors"><X className="w-5 h-5" /></button>
             {contactStatus === 'idle' ? (
                 <>
                     <div className="mb-8 text-center"><span className="text-[10px] font-mono uppercase tracking-widest text-indigo-500 block mb-2">{t.contactModal.title}</span><div className="w-12 h-1 bg-indigo-500 mx-auto rounded-full"></div></div>
                     <form onSubmit={handleContactSubmit} className="space-y-4">
-                        <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{t.contactModal.nameLabel}</label><input type="text" required className="w-full bg-[#111] border border-white/10 py-3 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700 rounded-xl" /></div>
-                        <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{t.modal.email}</label><input type="email" required className="w-full bg-[#111] border border-white/10 py-3 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700 rounded-xl" /></div>
-                        <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{t.contactModal.msgLabel}</label><textarea required rows="3" className="w-full bg-[#111] border border-white/10 py-3 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-700 rounded-xl resize-none" /></div>
+                        <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{t.contactModal.nameLabel}</label><input type="text" required className="w-full bg-[#111] border border-white/10 py-3 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-600 rounded-xl" /></div>
+                        <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{t.modal.email}</label><input type="email" required className="w-full bg-[#111] border border-white/10 py-3 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-600 rounded-xl" /></div>
+                        <div className="space-y-2"><label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{t.contactModal.msgLabel}</label><textarea required rows="3" className="w-full bg-[#111] border border-white/10 py-3 px-4 text-white text-sm focus:border-indigo-500 focus:outline-none transition-colors placeholder-gray-600 rounded-xl resize-none" /></div>
                         <button type="submit" disabled={loading} className="w-full bg-white text-black py-4 font-bold uppercase tracking-widest text-xs hover:bg-indigo-500 hover:text-white transition-colors flex justify-center items-center gap-2 rounded-xl mt-2">{loading ? <span className="animate-pulse">{t.modal.processing}</span> : <span className="flex items-center gap-2">{t.contactModal.send} <Send className="w-3 h-3" /></span>}</button>
                     </form>
                 </>
