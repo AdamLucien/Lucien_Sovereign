@@ -256,7 +256,7 @@ const CONTENT_MAP = {
 
 const SUPPORTED_LANGS = ['en', 'cs', 'de', 'uk', 'zh'];
 
-const App = () => {
+const App = ({ initialLang = 'en' }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedTier, setSelectedTier] = useState(null);
@@ -268,7 +268,7 @@ const App = () => {
   const [contactStatus, setContactStatus] = useState('idle');
   const [slotsLeft, setSlotsLeft] = useState(5);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState(initialLang);
   const [identityFlipped, setIdentityFlipped] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
   const [activeCapability, setActiveCapability] = useState(null);
