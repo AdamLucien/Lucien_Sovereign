@@ -51,7 +51,8 @@ const CONTENT_MAP = {
         ]
     },
     contactModal: { title: "Direct Uplink", nameLabel: "Identification", msgLabel: "Transmission Content", send: "Transmit Message", sent: "Message Encrypted & Sent." },
-    footer: { linkText: "ΛRCHΞON Protocol", rights: "All Rights Reserved.", legal: "High-Integrity Sovereignty. Fair Use Applied. Secured by Lucien Systems." }
+    footer: { linkText: "ΛRCHΞON Protocol", rights: "All Rights Reserved.", legal: "High-Integrity Sovereignty. Fair Use Applied. Secured by Lucien Systems." },
+    internal_links: { intro: "For deeper technical modules and architecture notes, see", archeon: "Archeon", and: "and", adamkarl: "AdamKarl." }
   },
   cs: {
     nav: { role: "Systémový Architekt", status: "SYSTÉM ONLINE", slots: "MÍSTA" },
@@ -101,7 +102,8 @@ const CONTENT_MAP = {
         ]
     },
     contactModal: { title: "Přímé Spojení", nameLabel: "Identifikace", msgLabel: "Obsah Přenosu", send: "Vyslat Zprávu", sent: "Zpráva Zašifrována & Odeslána." },
-    footer: { linkText: "ΛRCHΞON Protokol", rights: "Všechna práva vyhrazena.", legal: "Suverenita s vysokou integritou. Fair Use uplatněno. Pod záštitou Lucien Systems." }
+    footer: { linkText: "ΛRCHΞON Protokol", rights: "Všechna práva vyhrazena.", legal: "Suverenita s vysokou integritou. Fair Use uplatněno. Pod záštitou Lucien Systems." },
+    internal_links: { intro: "Pro detailní technické moduly a architekturu navštivte", archeon: "Archeon", and: "a", adamkarl: "AdamKarl." }
   },
   de: {
     nav: { role: "Systemarchitekt", status: "SYSTEM ONLINE", slots: "PLÄTZE" },
@@ -151,7 +153,8 @@ const CONTENT_MAP = {
         ]
     },
     contactModal: { title: "Direkte Verbindung", nameLabel: "Identifikation", msgLabel: "Inhalt", send: "Senden", sent: "Gesendet." },
-    footer: { linkText: "ΛRCHΞON Protokoll", rights: "Alle Rechte vorbehalten.", legal: "Hochintegre Souveränität. Fair Use. Lucien Systems." }
+    footer: { linkText: "ΛRCHΞON Protokoll", rights: "Alle Rechte vorbehalten.", legal: "Hochintegre Souveränität. Fair Use. Lucien Systems." },
+    internal_links: { intro: "Für technische Module und Architektur‑Notizen siehe", archeon: "Archeon", and: "und", adamkarl: "AdamKarl." }
   },
   uk: {
     nav: { role: "Системний Архітектор", status: "СИСТЕМА ОНЛАЙН", slots: "МІСЦЯ" },
@@ -198,7 +201,8 @@ const CONTENT_MAP = {
         ]
     },
     contactModal: { title: "Зв'язок", nameLabel: "Ідентифікація", msgLabel: "Зміст", send: "Надіслати", sent: "Надіслано." },
-    footer: { linkText: "ΛRCHΞON Протокол", rights: "Всі права захищені.", legal: "Суверенітет. Fair Use. Lucien Systems." }
+    footer: { linkText: "ΛRCHΞON Протокол", rights: "Всі права захищені.", legal: "Суверенітет. Fair Use. Lucien Systems." },
+    internal_links: { intro: "Для технічних модулів та архітектурних нотаток дивіться", archeon: "Archeon", and: "та", adamkarl: "AdamKarl." }
   },
   zh: {
     nav: { role: "系统架构师", status: "系统在线", slots: "名额" },
@@ -245,7 +249,8 @@ const CONTENT_MAP = {
         ]
     },
     contactModal: { title: "直接上行", nameLabel: "身份", msgLabel: "内容", send: "发送", sent: "已发送。" },
-    footer: { linkText: "ΛRCHΞON 协议", rights: "版权所有。", legal: "高诚信主权。公平使用。Lucien Systems 支持。" }
+    footer: { linkText: "ΛRCHΞON 协议", rights: "版权所有。", legal: "高诚信主权。公平使用。Lucien Systems 支持。" },
+    internal_links: { intro: "技术模块与架构注释请见", archeon: "Archeon", and: "与", adamkarl: "AdamKarl。" }
   }
 };
 
@@ -595,6 +600,12 @@ const App = () => {
                     {t.capabilities.phase}
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.capabilities.title}</h3>
+                <p className="mt-6 text-[11px] text-gray-400 uppercase tracking-[0.2em] font-mono">
+                  {t.internal_links.intro}{' '}
+                  <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-white transition-colors">Archeon</a>{' '}
+                  {t.internal_links.and}{' '}
+                  <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-white transition-colors">AdamKarl</a>
+                </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
