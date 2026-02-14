@@ -254,9 +254,372 @@ const CONTENT_MAP = {
   }
 };
 
+const CAPABILITY_SLUGS = [
+  'systemic-reconstruction',
+  'causal-ai-backbone',
+  'entropy-elimination',
+  'sovereign-frameworks'
+];
+
+const NAV_LINKS = {
+  en: [
+    { slug: 'systemic-reconstruction', label: 'Reconstruction' },
+    { slug: 'causal-ai-backbone', label: 'Causal AI' },
+    { slug: 'entropy-elimination', label: 'Entropy' },
+    { slug: 'sovereign-frameworks', label: 'Sovereign' }
+  ],
+  cs: [
+    { slug: 'systemic-reconstruction', label: 'Rekonstrukce' },
+    { slug: 'causal-ai-backbone', label: 'Kauzální AI' },
+    { slug: 'entropy-elimination', label: 'Entropie' },
+    { slug: 'sovereign-frameworks', label: 'Suverén' }
+  ],
+  de: [
+    { slug: 'systemic-reconstruction', label: 'Rekonstruktion' },
+    { slug: 'causal-ai-backbone', label: 'Kausal KI' },
+    { slug: 'entropy-elimination', label: 'Entropie' },
+    { slug: 'sovereign-frameworks', label: 'Souverän' }
+  ],
+  uk: [
+    { slug: 'systemic-reconstruction', label: 'Реконструкція' },
+    { slug: 'causal-ai-backbone', label: 'Каузальний AI' },
+    { slug: 'entropy-elimination', label: 'Ентропія' },
+    { slug: 'sovereign-frameworks', label: 'Суверен' }
+  ],
+  zh: [
+    { slug: 'systemic-reconstruction', label: '重构' },
+    { slug: 'causal-ai-backbone', label: '因果 AI' },
+    { slug: 'entropy-elimination', label: '熵消除' },
+    { slug: 'sovereign-frameworks', label: '主权' }
+  ]
+};
+
+const CAPABILITY_PAGES = {
+  en: {
+    cta_back: 'Return to Command',
+    cta_contact: 'Open Secure Channel',
+    pages: {
+      'systemic-reconstruction': {
+        eyebrow: 'Operational Capability',
+        title: 'Systemic Reconstruction',
+        subtitle: 'Surgical realignment of operational structures.',
+        summary:
+          'We map the fracture line, isolate the rot, and rebuild the operating model around clear authority, tight feedback loops, and high‑agency execution.',
+        sections: [
+          { title: 'Fracture Mapping', body: 'Trace decision latency, ownership gaps, and information decay until the structural break is exposed.' },
+          { title: 'Structural Rebuild', body: 'Redesign roles, handoffs, and escalation paths so execution moves without friction or ambiguity.' },
+          { title: 'Integrity Locks', body: 'Install governance rituals and control points that prevent regression and enforce the new architecture.' }
+        ],
+        outcomesTitle: 'Outcomes',
+        outcomes: ['Decision latency removed', 'Lean operating core', 'Clear authority model', 'Rebuild playbook delivered']
+      },
+      'causal-ai-backbone': {
+        eyebrow: 'Operational Capability',
+        title: 'Causal AI Backbone',
+        subtitle: "AI that understands causality — not just correlation.",
+        summary:
+          'We engineer a causal layer that explains why systems break, not just where they break. Signal replaces noise. Decisions stop drifting.',
+        sections: [
+          { title: 'Causal Graphs', body: 'Map cause–effect relationships across teams, systems, and incentives to reveal real control points.' },
+          { title: 'Signal Engine', body: 'Build models that prioritize structural signal over vanity metrics and noisy correlations.' },
+          { title: 'Decision Loops', body: 'Embed AI outputs into operational loops so humans act on cause, not guesswork.' }
+        ],
+        outcomesTitle: 'Outcomes',
+        outcomes: ['Causal visibility', 'Predictable decisions', 'Noise reduction', 'AI‑ready operating data']
+      },
+      'entropy-elimination': {
+        eyebrow: 'Operational Capability',
+        title: 'Entropy Elimination',
+        subtitle: 'Remove bottlenecks. Restore flow.',
+        summary:
+          'Entropy is the silent tax on execution. We identify where energy is lost, compress waste, and re‑establish flow across the system.',
+        sections: [
+          { title: 'Bottleneck Extraction', body: 'Surface the human and procedural choke points that stall throughput and accountability.' },
+          { title: 'Flow Reset', body: 'Re‑sequence workflows so value moves without handoff friction or approval drag.' },
+          { title: 'Protocol Compression', body: 'Eliminate redundant steps and reduce operational surface area.' }
+        ],
+        outcomesTitle: 'Outcomes',
+        outcomes: ['Cycle times reduced', 'Clear throughput paths', 'Operational friction removed', 'High‑agency execution restored']
+      },
+      'sovereign-frameworks': {
+        eyebrow: 'Operational Capability',
+        title: 'Sovereign Frameworks',
+        subtitle: 'Self‑governing business units with true autonomy.',
+        summary:
+          'We design units that operate without constant supervision — autonomous, accountable, and aligned to the core mission.',
+        sections: [
+          { title: 'Autonomy Design', body: 'Define authority boundaries, local decision rights, and internal accountability systems.' },
+          { title: 'Governance Spine', body: 'Install a minimal governance spine that preserves coherence without micromanagement.' },
+          { title: 'Succession Resilience', body: 'Ensure the unit survives leadership turnover and scales without dilution.' }
+        ],
+        outcomesTitle: 'Outcomes',
+        outcomes: ['Self‑governing units', 'Reduced executive drag', 'Scalable autonomy', 'Durable operating sovereignty']
+      }
+    }
+  },
+  cs: {
+    cta_back: 'Zpět na Centrálu',
+    cta_contact: 'Otevřít Zabezpečený Kanál',
+    pages: {
+      'systemic-reconstruction': {
+        eyebrow: 'Operační Kapacita',
+        title: 'Systémová Rekonstrukce',
+        subtitle: 'Chirurgické srovnání operačních struktur.',
+        summary:
+          'Mapujeme linii fraktury, izolujeme hnilobu a přestavíme operační model kolem jasné autority a tvrdých feedback loopů.',
+        sections: [
+          { title: 'Mapování Fraktury', body: 'Trasujeme zpoždění rozhodování, díry ve vlastnictví a degradaci informací.' },
+          { title: 'Strukturální Přestavba', body: 'Přepracujeme role, předávky a eskalace tak, aby exekuce proudila bez tření.' },
+          { title: 'Zámky Integrity', body: 'Nasadíme governance rituály, které zabrání regresi a drží architekturu.' }
+        ],
+        outcomesTitle: 'Výstupy',
+        outcomes: ['Odstraněná latence rozhodování', 'Štíhlé operační jádro', 'Jasný model autority', 'Rebuild playbook']
+      },
+      'causal-ai-backbone': {
+        eyebrow: 'Operační Kapacita',
+        title: 'Kauzální AI Backbone',
+        subtitle: 'AI, která chápe příčinu, ne jen korelaci.',
+        summary:
+          'Budujeme kauzální vrstvu, která vysvětlí proč se systém láme. Signál nahrazuje šum. Rozhodnutí přestávají driftovat.',
+        sections: [
+          { title: 'Kauzální Grafy', body: 'Mapujeme příčina–následek přes týmy, systémy a incentivy.' },
+          { title: 'Signal Engine', body: 'Modely, které dávají přednost strukturním signálům před vanity metrikami.' },
+          { title: 'Decision Loops', body: 'Vkládáme výstupy AI do operačních smyček, aby lidé jednali na základě příčiny.' }
+        ],
+        outcomesTitle: 'Výstupy',
+        outcomes: ['Kauzální viditelnost', 'Předvídatelná rozhodnutí', 'Redukce šumu', 'AI‑ready data']
+      },
+      'entropy-elimination': {
+        eyebrow: 'Operační Kapacita',
+        title: 'Eliminace Entropie',
+        subtitle: 'Odstranění úzkých míst. Obnova průtoku.',
+        summary:
+          'Entropie je tichá daň na exekuci. Odhalíme ztráty energie, stlačíme plýtvání a obnovíme flow.',
+        sections: [
+          { title: 'Extrakce Úzkých Míst', body: 'Identifikujeme lidská a procesní úzká hrdla, která brzdí throughput.' },
+          { title: 'Reset Flow', body: 'Přeřadíme workflow tak, aby hodnota tekla bez zbytečných schválení.' },
+          { title: 'Kompresní Protokoly', body: 'Eliminujeme redundanci a snižujeme operační povrch.' }
+        ],
+        outcomesTitle: 'Výstupy',
+        outcomes: ['Kratší cykly', 'Čisté throughput cesty', 'Odstraněné tření', 'Obnovená exekuce']
+      },
+      'sovereign-frameworks': {
+        eyebrow: 'Operační Kapacita',
+        title: 'Suverénní Frameworky',
+        subtitle: 'Autonomní jednotky bez neustálého dohledu.',
+        summary:
+          'Navrhujeme jednotky, které fungují bez permanentní kontroly — autonomní, odpovědné, sladěné s misí.',
+        sections: [
+          { title: 'Design Autonomie', body: 'Definujeme hranice autority, lokální rozhodovací práva a accountability.' },
+          { title: 'Governance Páteř', body: 'Nasadíme minimální governance páteř bez mikromanagementu.' },
+          { title: 'Odolnost Succese', body: 'Jednotka přežije výměnu leadershipu i škálování.' }
+        ],
+        outcomesTitle: 'Výstupy',
+        outcomes: ['Samosprávné jednotky', 'Nižší executive drag', 'Škálovatelná autonomie', 'Trvalá suverenita']
+      }
+    }
+  },
+  de: {
+    cta_back: 'Zurück zur Zentrale',
+    cta_contact: 'Sicheren Kanal Öffnen',
+    pages: {
+      'systemic-reconstruction': {
+        eyebrow: 'Operative Fähigkeit',
+        title: 'Systemische Rekonstruktion',
+        subtitle: 'Chirurgische Neuausrichtung operativer Strukturen.',
+        summary:
+          'Wir kartieren die Bruchlinie, isolieren die Fäule und bauen das Betriebsmodell um klare Autorität und harte Feedback‑Loops.',
+        sections: [
+          { title: 'Bruchstellen‑Mapping', body: 'Entscheidungslatenz, Ownership‑Lücken und Informationsverlust sichtbar machen.' },
+          { title: 'Struktureller Neubau', body: 'Rollen, Übergaben und Eskalationen so designen, dass Ausführung ohne Reibung läuft.' },
+          { title: 'Integritäts‑Locks', body: 'Governance‑Rituale installieren, die Regression verhindern und Architektur sichern.' }
+        ],
+        outcomesTitle: 'Ergebnisse',
+        outcomes: ['Entscheidungslatenz entfernt', 'Schlanker Operating‑Core', 'Klares Autoritätsmodell', 'Rebuild‑Playbook']
+      },
+      'causal-ai-backbone': {
+        eyebrow: 'Operative Fähigkeit',
+        title: 'Causal AI Backbone',
+        subtitle: 'KI, die Kausalität versteht — nicht nur Korrelation.',
+        summary:
+          'Wir bauen eine kausale Schicht, die erklärt, warum Systeme brechen. Signal ersetzt Rauschen. Entscheidungen stabilisieren sich.',
+        sections: [
+          { title: 'Kausale Graphen', body: 'Ursache‑Wirkung über Teams, Systeme und Anreize kartieren.' },
+          { title: 'Signal Engine', body: 'Modelle, die strukturelle Signale über Vanity‑Metriken stellen.' },
+          { title: 'Decision Loops', body: 'AI‑Output in operative Schleifen integrieren, damit Entscheidungen kausal werden.' }
+        ],
+        outcomesTitle: 'Ergebnisse',
+        outcomes: ['Kausale Sichtbarkeit', 'Vorhersagbare Entscheidungen', 'Rauschreduktion', 'AI‑fähige Daten']
+      },
+      'entropy-elimination': {
+        eyebrow: 'Operative Fähigkeit',
+        title: 'Entropie‑Eliminierung',
+        subtitle: 'Bottlenecks entfernen. Flow herstellen.',
+        summary:
+          'Entropie ist die stille Steuer auf Ausführung. Wir eliminieren Energieverluste und stellen den Flow wieder her.',
+        sections: [
+          { title: 'Bottleneck‑Extraktion', body: 'Menschliche und prozedurale Engpässe sichtbar machen und entfernen.' },
+          { title: 'Flow‑Reset', body: 'Workflows neu sequenzieren, damit Wert ohne Reibung fließt.' },
+          { title: 'Protokoll‑Kompression', body: 'Redundanz entfernen und operative Oberfläche reduzieren.' }
+        ],
+        outcomesTitle: 'Ergebnisse',
+        outcomes: ['Kürzere Zyklen', 'Klare Throughput‑Pfade', 'Reibung entfernt', 'High‑Agency Ausführung']
+      },
+      'sovereign-frameworks': {
+        eyebrow: 'Operative Fähigkeit',
+        title: 'Souveräne Frameworks',
+        subtitle: 'Selbststeuernde Einheiten mit echter Autonomie.',
+        summary:
+          'Wir designen Einheiten, die ohne permanente Aufsicht laufen — autonom, verantwortlich, missionsaligned.',
+        sections: [
+          { title: 'Autonomie‑Design', body: 'Autoritätsgrenzen, lokale Entscheidungsrechte und Accountability definieren.' },
+          { title: 'Governance‑Rückgrat', body: 'Minimalen Governance‑Spine installieren ohne Mikromanagement.' },
+          { title: 'Succession‑Resilienz', body: 'Einheit bleibt stabil bei Führungswechsel und Skalierung.' }
+        ],
+        outcomesTitle: 'Ergebnisse',
+        outcomes: ['Selbststeuernde Einheiten', 'Weniger Executive‑Drag', 'Skalierbare Autonomie', 'Dauerhafte Souveränität']
+      }
+    }
+  },
+  uk: {
+    cta_back: 'Назад до Центру',
+    cta_contact: 'Відкрити Захищений Канал',
+    pages: {
+      'systemic-reconstruction': {
+        eyebrow: 'Операційна Можливість',
+        title: 'Системна Реконструкція',
+        subtitle: 'Хірургічне вирівнювання операційних структур.',
+        summary:
+          'Ми мапуємо лінію розлому, ізолюємо гниль і перебудовуємо модель навколо чіткої влади й жорстких feedback‑циклів.',
+        sections: [
+          { title: 'Мапування Розлому', body: 'Виявляємо затримки рішень, прогалини відповідальності та деградацію інформації.' },
+          { title: 'Структурна Перебудова', body: 'Переосмислюємо ролі, передавання та ескалації для безтертєвої екзекуції.' },
+          { title: 'Замки Цілісності', body: 'Встановлюємо governance‑ритуали, які не допускають регресу.' }
+        ],
+        outcomesTitle: 'Результати',
+        outcomes: ['Прибрана латентність рішень', 'Струнке ядро', 'Чітка модель влади', 'Rebuild playbook']
+      },
+      'causal-ai-backbone': {
+        eyebrow: 'Операційна Можливість',
+        title: 'Causal AI Backbone',
+        subtitle: 'AI, що розуміє причинність, а не лише кореляції.',
+        summary:
+          'Ми будуємо каузальний шар, який пояснює, чому система ламається. Сигнал замінює шум.',
+        sections: [
+          { title: 'Каузальні Графи', body: 'Карта причин‑наслідків між командами, системами та інсентивами.' },
+          { title: 'Signal Engine', body: 'Моделі, що піднімають структурний сигнал над vanity‑метриками.' },
+          { title: 'Decision Loops', body: 'Вбудовуємо AI‑висновки в операційні петлі.' }
+        ],
+        outcomesTitle: 'Результати',
+        outcomes: ['Каузальна видимість', 'Стабільні рішення', 'Зменшення шуму', 'AI‑готові дані']
+      },
+      'entropy-elimination': {
+        eyebrow: 'Операційна Можливість',
+        title: 'Елімінація Ентропії',
+        subtitle: 'Прибрати вузькі місця. Відновити потік.',
+        summary:
+          'Ентропія — тиха податкова на екзекуцію. Ми знімаємо втрати енергії та повертаємо flow.',
+        sections: [
+          { title: 'Екстракція Вузьких Місць', body: 'Виявляємо людські та процедурні choke‑points.' },
+          { title: 'Reset Flow', body: 'Пересеквенсовуємо процеси, щоб цінність рухалась без тертя.' },
+          { title: 'Компресія Протоколів', body: 'Видаляємо редундантні кроки та скорочуємо поверхню.' }
+        ],
+        outcomesTitle: 'Результати',
+        outcomes: ['Коротші цикли', 'Чисті throughputs', 'Менше тертя', 'Висока екзекуція']
+      },
+      'sovereign-frameworks': {
+        eyebrow: 'Операційна Можливість',
+        title: 'Суверенні Фреймворки',
+        subtitle: 'Самокеровані одиниці з реальною автономією.',
+        summary:
+          'Проєктуємо одиниці, що працюють без постійного нагляду — автономні та відповідальні.',
+        sections: [
+          { title: 'Дизайн Автономії', body: 'Визначаємо межі влади та локальні права рішень.' },
+          { title: 'Governance Spine', body: 'Мінімальний governance‑каркас без мікроменеджменту.' },
+          { title: 'Succession Resilience', body: 'Стійкість при зміні керівництва й масштабуванні.' }
+        ],
+        outcomesTitle: 'Результати',
+        outcomes: ['Самокеровані одиниці', 'Менше executive drag', 'Масштабована автономія', 'Тривала суверенність']
+      }
+    }
+  },
+  zh: {
+    cta_back: '返回中枢',
+    cta_contact: '打开安全通道',
+    pages: {
+      'systemic-reconstruction': {
+        eyebrow: '操作能力',
+        title: '系统性重构',
+        subtitle: '对运营结构进行外科级对齐。',
+        summary:
+          '我们绘制断裂线，隔离腐败，围绕清晰权责与反馈回路重建运营模型。',
+        sections: [
+          { title: '断裂映射', body: '追踪决策延迟、责任缺口与信息衰减。' },
+          { title: '结构重建', body: '重构角色、交接与升级路径，使执行无摩擦。' },
+          { title: '完整性锁', body: '安装治理仪式，防止回退并巩固新架构。' }
+        ],
+        outcomesTitle: '结果',
+        outcomes: ['决策延迟消除', '精简核心', '清晰权责模型', '重构作战手册']
+      },
+      'causal-ai-backbone': {
+        eyebrow: '操作能力',
+        title: '因果 AI 主干',
+        subtitle: '理解因果，而非只看相关。',
+        summary:
+          '我们构建因果层，解释系统为何崩坏。信号取代噪声，决策稳定。',
+        sections: [
+          { title: '因果图谱', body: '绘制团队、系统、激励之间的因果链。' },
+          { title: '信号引擎', body: '优先结构性信号，剔除虚荣指标。' },
+          { title: '决策回路', body: '把 AI 输出嵌入运营回路，驱动真实行动。' }
+        ],
+        outcomesTitle: '结果',
+        outcomes: ['因果可视化', '可预测决策', '噪声降低', 'AI 就绪数据']
+      },
+      'entropy-elimination': {
+        eyebrow: '操作能力',
+        title: '熵消除',
+        subtitle: '清除瓶颈，恢复流动。',
+        summary:
+          '熵是执行的隐形税。我们找出能量损耗并恢复系统流动。',
+        sections: [
+          { title: '瓶颈提取', body: '识别人为与流程瓶颈，移除阻塞点。' },
+          { title: '流动重置', body: '重新排序流程，让价值无阻流动。' },
+          { title: '协议压缩', body: '消除冗余步骤，缩小运营表面。' }
+        ],
+        outcomesTitle: '结果',
+        outcomes: ['周期缩短', '清晰吞吐路径', '摩擦移除', '高执行力恢复']
+      },
+      'sovereign-frameworks': {
+        eyebrow: '操作能力',
+        title: '主权框架',
+        subtitle: '自我治理的业务单元。',
+        summary:
+          '设计无需持续监管的单元——自治、负责、与使命对齐。',
+        sections: [
+          { title: '自治设计', body: '定义权力边界与本地决策权。' },
+          { title: '治理脊柱', body: '最小治理结构，避免微观管理。' },
+          { title: '继任韧性', body: '在领导更替与扩张中保持稳定。' }
+        ],
+        outcomesTitle: '结果',
+        outcomes: ['自我治理单元', '减少高层拖拽', '可扩展自治', '持久主权']
+      }
+    }
+  }
+};
+
 const SUPPORTED_LANGS = ['en', 'cs', 'de', 'uk', 'zh'];
 
-const App = ({ initialLang = 'en' }) => {
+const parseRoute = (pathname) => {
+  const segments = (pathname || '/en/').split('/').filter(Boolean);
+  const lang = SUPPORTED_LANGS.includes(segments[0]) ? segments[0] : 'en';
+  if (segments[1] === 'capabilities' && segments[2]) {
+    return { type: 'capability', lang, slug: segments[2] };
+  }
+  return { type: 'home', lang };
+};
+
+const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
+  const initialRoute = parseRoute(initialPath);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedTier, setSelectedTier] = useState(null);
@@ -268,7 +631,10 @@ const App = ({ initialLang = 'en' }) => {
   const [contactStatus, setContactStatus] = useState('idle');
   const [slotsLeft, setSlotsLeft] = useState(5);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [lang, setLang] = useState(initialLang);
+  const [lang, setLang] = useState(initialRoute.lang || initialLang);
+  const [route, setRoute] = useState(initialRoute);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionLabel, setTransitionLabel] = useState('');
   const [identityFlipped, setIdentityFlipped] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
   const [activeCapability, setActiveCapability] = useState(null);
@@ -284,12 +650,30 @@ const App = ({ initialLang = 'en' }) => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const t = CONTENT_MAP[lang] || CONTENT_MAP['en'];
+  const navLinks = NAV_LINKS[lang] || NAV_LINKS.en;
+  const capabilityPages = CAPABILITY_PAGES[lang] || CAPABILITY_PAGES.en;
+  const capabilityItems = (t.capabilities?.items || []).map((item, idx) => ({
+    ...item,
+    slug: CAPABILITY_SLUGS[idx]
+  }));
 
   useEffect(() => {
-    const pathLang = window.location.pathname.split('/').filter(Boolean)[0];
-    if (SUPPORTED_LANGS.includes(pathLang)) {
-      setLang(pathLang);
-    }
+    if (typeof window === 'undefined') return;
+    const nextRoute = parseRoute(window.location.pathname);
+    setLang(nextRoute.lang);
+    setRoute(nextRoute);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handlePop = () => {
+      const nextRoute = parseRoute(window.location.pathname);
+      setLang(nextRoute.lang);
+      setRoute(nextRoute);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+    window.addEventListener('popstate', handlePop);
+    return () => window.removeEventListener('popstate', handlePop);
   }, []);
 
   useEffect(() => {
@@ -384,9 +768,28 @@ const App = ({ initialLang = 'en' }) => {
     }, 1500);
   };
 
+  const navigateTo = (path, label) => {
+    if (typeof window === 'undefined') return;
+    if (window.location.pathname === path) return;
+    setTransitionLabel(label || '');
+    setIsTransitioning(true);
+    setTimeout(() => {
+      window.history.pushState({}, '', path);
+      const nextRoute = parseRoute(path);
+      setLang(nextRoute.lang);
+      setRoute(nextRoute);
+      setIsTransitioning(false);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }, 500);
+  };
+
   const handleLangChange = (nextLang) => {
     if (nextLang === lang) return;
-    window.location.href = `/${nextLang}/`;
+    if (route.type === 'capability' && route.slug) {
+      navigateTo(`/${nextLang}/capabilities/${route.slug}/`, nextLang.toUpperCase());
+      return;
+    }
+    navigateTo(`/${nextLang}/`, nextLang.toUpperCase());
   };
 
   const runAiAudit = async (e) => {
@@ -433,8 +836,81 @@ const App = ({ initialLang = 'en' }) => {
     }
   };
 
+  const renderCapabilityPage = (page) => {
+    if (!page) return null;
+    return (
+      <main className="pt-40 pb-24 px-6 border-b border-white/10 relative z-10 animate-[pageEnter_0.6s_ease-out]">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="mb-10">
+            <button
+              onClick={() => navigateTo(`/${lang}/`, t.nav.role)}
+              className="text-[10px] uppercase tracking-[0.35em] text-gray-400 hover:text-white transition-colors font-mono"
+            >
+              {capabilityPages.cta_back}
+            </button>
+          </div>
+          <div className="mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1 border border-white/10 bg-white/5 rounded-full mb-8">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-indigo-300 font-bold font-mono">{page.eyebrow}</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6">{page.title}</h1>
+            <p className="text-xl text-gray-300 max-w-3xl">{page.subtitle}</p>
+            <p className="text-sm text-gray-400 max-w-3xl mt-6 leading-relaxed">{page.summary}</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {page.sections.map((section, idx) => (
+              <div key={idx} className="bg-[#0c0c0c] border border-white/10 rounded-3xl p-8 hover:border-indigo-500/30 transition-colors">
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4">{section.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{section.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+            <div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4">{page.outcomesTitle}</h3>
+              <ul className="space-y-3">
+                {page.outcomes.map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3 text-sm text-gray-300">
+                    <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col gap-3 w-full md:w-auto">
+              <button
+                onClick={() => setIsContactModalOpen(true)}
+                className="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest text-xs hover:bg-indigo-500 hover:text-white transition-colors rounded-xl"
+              >
+                {capabilityPages.cta_contact}
+              </button>
+              <button
+                onClick={() => navigateTo(`/${lang}/`, t.nav.role)}
+                className="px-8 py-3 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-indigo-500 hover:text-indigo-300 transition-colors rounded-xl"
+              >
+                {capabilityPages.cta_back}
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#030303] text-gray-200 font-sans selection:bg-indigo-500 selection:text-white overflow-x-hidden relative font-sans">
+      {isTransitioning && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-[#020202]">
+          <div className="absolute inset-0 opacity-60 animate-[veilIn_0.6s_ease-out] bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.15),transparent_60%)]"></div>
+          <div className="relative z-10 text-center">
+            <div className="text-[10px] uppercase tracking-[0.4em] text-indigo-300 font-mono mb-4">Transition</div>
+            <div className="text-3xl md:text-4xl font-bold text-white uppercase tracking-widest">{transitionLabel || 'Protocol'}</div>
+            <div className="mt-6 h-px w-56 mx-auto bg-gradient-to-r from-transparent via-indigo-500 to-transparent animate-[veilSweep_1.2s_ease-in-out_infinite]"></div>
+          </div>
+        </div>
+      )}
       <div className="fixed inset-0 z-[1] pointer-events-none opacity-[0.04] mix-blend-overlay"
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
@@ -474,6 +950,22 @@ const App = ({ initialLang = 'en' }) => {
             </div>
           </div>
 
+          <div className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.slug}
+                href={`/${lang}/capabilities/${link.slug}/`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo(`/${lang}/capabilities/${link.slug}/`, link.label);
+                }}
+                className="text-[10px] uppercase tracking-[0.35em] text-gray-400 hover:text-white transition-colors font-mono"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
           <div className="flex items-center gap-6">
              <div className="hidden md:flex items-center gap-2 text-indigo-400/80 text-[10px] font-mono tracking-widest">
                 <span className="relative flex h-1.5 w-1.5">
@@ -492,14 +984,18 @@ const App = ({ initialLang = 'en' }) => {
         </div>
       </nav>
 
-      <header className="relative pt-48 pb-32 px-6 border-b border-white/10 overflow-hidden z-10">
-        <div className="max-w-[1200px] mx-auto text-center">
-            <div className="inline-flex items-center justify-center gap-2 mb-12 px-4 py-1 border border-white/10 bg-white/5 backdrop-blur-md rounded-full"><span className="text-[10px] uppercase tracking-[0.2em] text-indigo-300 font-bold">{t.hero.badge}</span></div>
-            <h1 className={`text-7xl md:text-[10rem] font-bold tracking-tighter text-white mb-12 ${lang === 'cs' ? 'leading-normal' : 'leading-[0.85]'}`}>{t.hero.title1}<br/><span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700">{t.hero.title2}</span></h1>
-            <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16">{t.hero.subtitle} <span className="text-white font-medium border-b border-indigo-500/50 pb-1">{t.hero.subtitle_accent}</span></p>
-            <div className="flex justify-center gap-4"><button onClick={() => document.getElementById('ai-scanner').scrollIntoView({ behavior: 'smooth' })} className="group bg-white text-black px-12 py-5 font-bold text-sm uppercase tracking-widest transition-all hover:bg-indigo-500 hover:text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center gap-3 rounded-sm">{t.hero.cta} <ArrowRight className="w-4 h-4" /></button></div>
-        </div>
-      </header>
+      {route.type === 'capability' ? (
+        renderCapabilityPage(capabilityPages.pages?.[route.slug])
+      ) : (
+        <>
+          <header className="relative pt-48 pb-32 px-6 border-b border-white/10 overflow-hidden z-10 animate-[pageEnter_0.6s_ease-out]">
+            <div className="max-w-[1200px] mx-auto text-center">
+                <div className="inline-flex items-center justify-center gap-2 mb-12 px-4 py-1 border border-white/10 bg-white/5 backdrop-blur-md rounded-full"><span className="text-[10px] uppercase tracking-[0.2em] text-indigo-300 font-bold">{t.hero.badge}</span></div>
+                <h1 className={`text-7xl md:text-[10rem] font-bold tracking-tighter text-white mb-12 ${lang === 'cs' ? 'leading-normal' : 'leading-[0.85]'}`}>{t.hero.title1}<br/><span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700">{t.hero.title2}</span></h1>
+                <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16">{t.hero.subtitle} <span className="text-white font-medium border-b border-indigo-500/50 pb-1">{t.hero.subtitle_accent}</span></p>
+                <div className="flex justify-center gap-4"><button onClick={() => document.getElementById('ai-scanner').scrollIntoView({ behavior: 'smooth' })} className="group bg-white text-black px-12 py-5 font-bold text-sm uppercase tracking-widest transition-all hover:bg-indigo-500 hover:text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center gap-3 rounded-sm">{t.hero.cta} <ArrowRight className="w-4 h-4" /></button></div>
+            </div>
+          </header>
 
       {/* PHASE 01: AUDIT */}
       <section id="ai-scanner" className="py-32 px-6 bg-[#050505] border-b border-white/10 relative z-10">
@@ -609,14 +1105,18 @@ const App = ({ initialLang = 'en' }) => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-                {t.capabilities.items.map((item, idx) => (
-                    <div
+                {capabilityItems.map((item, idx) => (
+                    <a
                       key={idx}
-                      className={`group p-8 bg-[#0c0c0c] border border-white/5 rounded-3xl transition-all duration-500 hover:border-indigo-500/30 hover:-translate-y-1 ${isTouch && activeCapability === idx ? 'border-indigo-500/30 -translate-y-1' : ''}`}
-                      onClick={() => {
-                        if (!isTouch) return;
-                        setActiveCapability((prev) => (prev === idx ? null : idx));
+                      href={`/${lang}/capabilities/${item.slug}/`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (isTouch) {
+                          setActiveCapability((prev) => (prev === idx ? null : idx));
+                        }
+                        navigateTo(`/${lang}/capabilities/${item.slug}/`, item.title);
                       }}
+                      className={`group p-8 bg-[#0c0c0c] border border-white/5 rounded-3xl transition-all duration-500 hover:border-indigo-500/30 hover:-translate-y-1 ${isTouch && activeCapability === idx ? 'border-indigo-500/30 -translate-y-1' : ''}`}
                     >
                         <div className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-6 transition-transform border border-white/5 group-hover:scale-110 group-hover:border-indigo-500/20 ${isTouch && activeCapability === idx ? 'scale-110 border-indigo-500/20' : ''}`}>
                             {item.icon === 'layers' && <Layers className="w-6 h-6 text-white" />}
@@ -626,7 +1126,7 @@ const App = ({ initialLang = 'en' }) => {
                         </div>
                         <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-4 leading-tight">{item.title}</h4>
                         <p className={`text-gray-400 text-xs leading-relaxed font-light group-hover:text-gray-200 transition-colors ${isTouch && activeCapability === idx ? 'text-gray-200' : ''}`}>{item.desc}</p>
-                    </div>
+                    </a>
                 ))}
             </div>
         </div>
@@ -696,6 +1196,8 @@ const App = ({ initialLang = 'en' }) => {
             </div>
         </div>
       </section>
+        </>
+      )}
 
       <footer className="py-16 px-6 bg-black z-10 relative border-t border-white/10 overflow-hidden text-sans">
         <div className="absolute -bottom-4 -right-4 text-[120px] font-bold text-white/[0.04] select-none pointer-events-none tracking-tighter uppercase">LUCIEN</div>
