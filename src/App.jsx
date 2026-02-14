@@ -563,7 +563,7 @@ const App = ({ initialLang = 'en' }) => {
                   }}
                 >
                     <div className={`relative z-10 h-full flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0 ${identityFlipped ? 'opacity-0 pointer-events-none' : ''}`}>
-                        <div><div className="w-16 h-16 bg-white text-black flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,255,255,0.1)] rounded-2xl"><User className="w-8 h-8" /></div><h3 className="text-4xl text-white font-bold mb-2 tracking-tighter uppercase font-sans">ADAM<br/>KARL<br/>LUCIEN</h3><p className="text-xs text-indigo-400 uppercase tracking-widest mt-4">{t.identity.role}</p></div>
+                        <div><div className="w-16 h-16 bg-white text-black flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,255,255,0.1)] rounded-2xl"><User className="w-8 h-8" /></div><h3 className="text-4xl text-white font-bold mb-2 tracking-tighter uppercase font-heading">ADAM<br/>KARL<br/>LUCIEN</h3><p className="text-xs text-indigo-400 uppercase tracking-widest mt-4">{t.identity.role}</p></div>
                         <div className="space-y-4 font-mono text-[10px] uppercase tracking-widest">
                             <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">{t.identity.id_card.status}</span><span className="text-white">{t.identity.id_card.active}</span></div>
                             <div className="flex justify-between border-b border-white/10 pb-2"><span className="text-gray-400">{t.identity.id_card.base}</span><span className="text-white">{t.identity.id_card.prague}</span></div>
