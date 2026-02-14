@@ -4,6 +4,12 @@ const hasFileExtension = (path) => /\.[a-zA-Z0-9]+$/.test(path);
 export const onRequest = async ({ request, next }) => {
   const url = new URL(request.url);
 
+  // Enforce non-www host
+  if (url.hostname.startsWith('www.')) {
+    url.hostname = url.hostname.replace(/^www\./, '');
+    return Response.redirect(url.toString(), 301);
+  }
+
   // Enforce https
   if (url.protocol === 'http:') {
     url.protocol = 'https:';
