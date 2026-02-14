@@ -465,12 +465,12 @@ const App = ({ initialLang = 'en' }) => {
                     onError={() => setLogoError(true)} 
                   />
               ) : (
-                  <div className="font-bold text-xs tracking-tighter text-white uppercase font-sans">ΛRCH</div>
+                  <div className="font-bold text-xs tracking-tighter text-white uppercase font-heading">ΛRCH</div>
               )}
             </div>
             <div className="flex flex-col justify-center">
                <span className="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-mono">{t.nav.role}</span>
-               <span className="text-sm font-bold tracking-widest text-white uppercase font-sans">LUCIEN</span>
+               <span className="text-sm font-bold tracking-widest text-white uppercase font-heading">LUCIEN</span>
             </div>
           </div>
 
