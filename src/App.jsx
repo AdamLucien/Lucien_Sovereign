@@ -641,6 +641,7 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
   const [activeProtocol, setActiveProtocol] = useState(null);
   const [activePricing, setActivePricing] = useState(null);
   const [contactActive, setContactActive] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   
   const [logoError, setLogoError] = useState(false);
 
@@ -980,9 +981,55 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
                     <button key={l} onClick={() => handleLangChange(l)} className={`px-3 py-1.5 text-[10px] font-bold transition-colors uppercase ${lang === l ? 'bg-white text-black' : 'bg-transparent text-gray-400 hover:text-white'}`}>{l}</button>
                 ))}
              </div>
+
+             <button
+               aria-label="Open navigation"
+               onClick={() => setMobileNavOpen((prev) => !prev)}
+               className="lg:hidden w-10 h-10 border border-white/10 rounded-md bg-black/60 flex items-center justify-center hover:border-indigo-500/50 hover:text-white transition-colors"
+             >
+               <div className={`w-5 h-5 relative transition-all ${mobileNavOpen ? 'text-indigo-400' : 'text-white'}`}>
+                 <span className={`absolute left-0 top-1 w-full h-0.5 bg-current transition-transform duration-300 ${mobileNavOpen ? 'translate-y-2 rotate-45' : ''}`}></span>
+                 <span className={`absolute left-0 top-2.5 w-full h-0.5 bg-current transition-opacity duration-300 ${mobileNavOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                 <span className={`absolute left-0 top-4 w-full h-0.5 bg-current transition-transform duration-300 ${mobileNavOpen ? '-translate-y-2 -rotate-45' : ''}`}></span>
+               </div>
+             </button>
           </div>
         </div>
       </nav>
+
+      {mobileNavOpen && (
+        <div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-xl lg:hidden">
+          <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.25),transparent_55%)]"></div>
+          <div className="relative z-10 pt-28 px-6">
+            <div className="max-w-[520px] mx-auto bg-[#050505] border border-white/10 rounded-3xl p-8 animate-[pageEnter_0.5s_ease-out]">
+              <div className="flex items-center justify-between mb-8">
+                <div className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-mono">Navigation</div>
+                <button onClick={() => setMobileNavOpen(false)} className="text-gray-400 hover:text-white transition-colors">
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="space-y-4">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.slug}
+                    onClick={() => {
+                      setMobileNavOpen(false);
+                      navigateTo(`/${lang}/capabilities/${link.slug}/`, link.label);
+                    }}
+                    className="w-full text-left px-5 py-4 border border-white/10 rounded-2xl bg-black/40 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-colors"
+                  >
+                    <div className="text-xs uppercase tracking-[0.35em] text-gray-300 font-mono">{link.label}</div>
+                    <div className="mt-2 text-sm text-gray-400">Capability module</div>
+                  </button>
+                ))}
+              </div>
+              <div className="mt-6 text-[10px] uppercase tracking-[0.3em] text-gray-500 font-mono">
+                {t.nav.status}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {route.type === 'capability' ? (
         renderCapabilityPage(capabilityPages.pages?.[route.slug])
@@ -1244,10 +1291,22 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
                <span className="text-[9px] text-gray-500 uppercase tracking-widest">© 2026 {t.footer.rights}</span>
                <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Fair Use Applied</span>
                <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Quantum-Resistant Encryption</span>
-               <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-full min-h-[32px]">adamkarl.lucien.technology</a>
-               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-full min-h-[32px]">portal.lucien.technology</a>
-               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-full min-h-[32px]">archeon.lucien.technology</a>
-               <a href="https://kryfor.lucien.technology" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-full min-h-[32px]">kryfor.lucien.technology</a>
+               <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
+                 <span>adamkarl.lucien.technology</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Identity Core</span>
+               </a>
+               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
+                 <span>portal.lucien.technology</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Client Access</span>
+               </a>
+               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
+                 <span>archeon.lucien.technology</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Protocol Archive</span>
+               </a>
+               <a href="https://kryfor.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
+                 <span>kryfor.lucien.technology</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Forensic Signals</span>
+               </a>
             </div>
             <div className="text-[9px] text-gray-500 uppercase tracking-widest italic">
                {t.footer.legal}
