@@ -1297,7 +1297,7 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
                </a>
                <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
                  <span>portal.lucien.technology</span>
-                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Client Operations Portal</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Interim Management OS</span>
                </a>
                <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
                  <span>archeon.lucien.technology</span>
