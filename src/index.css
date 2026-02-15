@@ -16,6 +16,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  overflow-x: hidden;
+}
+
 h1,
 h2,
 h3,

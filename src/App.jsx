@@ -854,7 +854,7 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
             <div className="inline-flex items-center gap-2 px-4 py-1 border border-white/10 bg-white/5 rounded-full mb-8">
               <span className="text-[10px] uppercase tracking-[0.3em] text-indigo-300 font-bold font-mono">{page.eyebrow}</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6">{page.title}</h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 max-w-[92vw] break-words">{page.title}</h1>
             <p className="text-xl text-gray-300 max-w-3xl">{page.subtitle}</p>
             <p className="text-sm text-gray-400 max-w-3xl mt-6 leading-relaxed">{page.summary}</p>
           </div>
@@ -1038,7 +1038,7 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
           <header className="relative pt-48 pb-32 px-6 border-b border-white/10 overflow-hidden z-10 animate-[pageEnter_0.6s_ease-out]">
             <div className="max-w-[1200px] mx-auto text-center">
                 <div className="inline-flex items-center justify-center gap-2 mb-12 px-4 py-1 border border-white/10 bg-white/5 backdrop-blur-md rounded-full"><span className="text-[10px] uppercase tracking-[0.2em] text-indigo-300 font-bold">{t.hero.badge}</span></div>
-                <h1 className={`text-7xl md:text-[10rem] font-bold tracking-tighter text-white mb-12 ${lang === 'cs' ? 'leading-normal' : 'leading-[0.85]'}`}>{t.hero.title1}<br/><span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700">{t.hero.title2}</span></h1>
+                <h1 className={`text-6xl sm:text-7xl md:text-[10rem] font-bold tracking-tighter text-white mb-12 max-w-[92vw] mx-auto break-words ${lang === 'cs' ? 'leading-normal' : 'leading-[0.85]'}`}>{t.hero.title1}<br/><span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700">{t.hero.title2}</span></h1>
                 <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16">{t.hero.subtitle} <span className="text-white font-medium border-b border-indigo-500/50 pb-1">{t.hero.subtitle_accent}</span></p>
                 <div className="flex justify-center gap-4"><button onClick={() => document.getElementById('ai-scanner').scrollIntoView({ behavior: 'smooth' })} className="group bg-white text-black px-12 py-5 font-bold text-sm uppercase tracking-widest transition-all hover:bg-indigo-500 hover:text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center gap-3 rounded-sm">{t.hero.cta} <ArrowRight className="w-4 h-4" /></button></div>
             </div>
@@ -1291,20 +1291,20 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
                <span className="text-[9px] text-gray-500 uppercase tracking-widest">© 2026 {t.footer.rights}</span>
                <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Fair Use Applied</span>
                <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Quantum-Resistant Encryption</span>
-               <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
-                 <span>adamkarl.lucien.technology</span>
+               <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px] max-w-[220px]">
+                 <span className="break-all">adamkarl.lucien.technology</span>
                  <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Lucien OS Profile</span>
                </a>
-               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
-                 <span>portal.lucien.technology</span>
+               <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px] max-w-[220px]">
+                 <span className="break-all">portal.lucien.technology</span>
                  <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Interim Management OS</span>
                </a>
-               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
-                 <span>archeon.lucien.technology</span>
+               <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px] max-w-[220px]">
+                 <span className="break-all">archeon.lucien.technology</span>
                  <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Strategic Governance OS</span>
                </a>
-               <a href="https://kryfor.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
-                 <span>kryfor.lucien.technology</span>
+               <a href="https://kryfor.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px] max-w-[220px]">
+                 <span className="break-all">kryfor.lucien.technology</span>
                  <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Agentic AI Structure SaaS</span>
                </a>
             </div>
