@@ -1293,19 +1293,19 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
                <span className="text-[9px] text-gray-500 uppercase tracking-widest uppercase">Quantum-Resistant Encryption</span>
                <a href="https://adamkarl.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
                  <span>adamkarl.lucien.technology</span>
-                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Identity Core</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Lucien OS Profile</span>
                </a>
                <a href="https://portal.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
                  <span>portal.lucien.technology</span>
-                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Client Access</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Client Operations Portal</span>
                </a>
                <a href="https://archeon.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
                  <span>archeon.lucien.technology</span>
-                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Protocol Archive</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Strategic Governance OS</span>
                </a>
                <a href="https://kryfor.lucien.technology" target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col gap-1 px-4 py-3 text-[9px] text-gray-300 uppercase tracking-widest border border-white/10 bg-white/5 hover:border-indigo-500/40 hover:text-white hover:bg-indigo-500/10 transition-all rounded-2xl min-h-[44px]">
                  <span>kryfor.lucien.technology</span>
-                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Forensic Signals</span>
+                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase group-hover:text-gray-300">Cryptographic Forensics</span>
                </a>
             </div>
             <div className="text-[9px] text-gray-500 uppercase tracking-widest italic">
