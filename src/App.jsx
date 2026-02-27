@@ -942,7 +942,7 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
                     onError={() => setLogoError(true)} 
                   />
               ) : (
-                  <div className="font-bold text-xs tracking-tighter text-white uppercase font-heading">ΛRCH</div>
+                  <div className="font-bold text-xs tracking-tighter text-white uppercase font-heading">A.K.L.</div>
               )}
             </div>
             <div className="flex flex-col justify-center">
