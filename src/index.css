@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600&display=swap");
 @import "tailwindcss";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --font-heading: "Bruno Ace SC", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-heading: "Sora", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -30,8 +30,31 @@ h6 {
   text-transform: uppercase;
 }
 
+h1,
+h2,
+h3,
+h1[class],
+h2[class],
+h3[class] {
+  font-weight: 600;
+}
+
+h4,
+h5,
+h6,
+h4[class],
+h5[class],
+h6[class] {
+  font-weight: 500;
+}
+
 .font-heading {
   font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.font-heading.font-bold {
+  font-weight: 600;
 }
 
 @keyframes pageEnter {
