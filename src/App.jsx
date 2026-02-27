@@ -947,7 +947,7 @@ const App = ({ initialLang = 'en', initialPath = '/en/' }) => {
             </div>
             <div className="flex flex-col justify-center">
                <span className="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-mono">{t.nav.role}</span>
-               <span className="text-sm font-bold tracking-widest text-white uppercase font-heading">LUCIEN</span>
+               <span className="text-sm font-bold tracking-widest text-white uppercase font-heading">LUCIEN CONSULT</span>
             </div>
           </div>
 
