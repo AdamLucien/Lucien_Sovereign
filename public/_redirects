@@ -1,1 +1,68 @@
+# Canonical host + protocol (force single indexed origin)
+http://www.lucien.technology/* https://lucien.technology/:splat 301!
+https://www.lucien.technology/* https://lucien.technology/:splat 301!
+http://lucien.technology/* https://lucien.technology/:splat 301!
+
+# Root canonical
+/index.html / 301
 / /en/ 301
+
+# Language roots (trailing slash)
+/en /en/ 301
+/cs /cs/ 301
+/de /de/ 301
+/uk /uk/ 301
+/zh /zh/ 301
+
+# index.html normalization (language roots)
+/en/index.html /en/ 301
+/cs/index.html /cs/ 301
+/de/index.html /de/ 301
+/uk/index.html /uk/ 301
+/zh/index.html /zh/ 301
+
+# Capabilities (trailing slash + index normalization)
+/en/capabilities/systemic-reconstruction /en/capabilities/systemic-reconstruction/ 301
+/en/capabilities/causal-ai-backbone /en/capabilities/causal-ai-backbone/ 301
+/en/capabilities/entropy-elimination /en/capabilities/entropy-elimination/ 301
+/en/capabilities/sovereign-frameworks /en/capabilities/sovereign-frameworks/ 301
+/en/capabilities/systemic-reconstruction/index.html /en/capabilities/systemic-reconstruction/ 301
+/en/capabilities/causal-ai-backbone/index.html /en/capabilities/causal-ai-backbone/ 301
+/en/capabilities/entropy-elimination/index.html /en/capabilities/entropy-elimination/ 301
+/en/capabilities/sovereign-frameworks/index.html /en/capabilities/sovereign-frameworks/ 301
+
+/cs/capabilities/systemic-reconstruction /cs/capabilities/systemic-reconstruction/ 301
+/cs/capabilities/causal-ai-backbone /cs/capabilities/causal-ai-backbone/ 301
+/cs/capabilities/entropy-elimination /cs/capabilities/entropy-elimination/ 301
+/cs/capabilities/sovereign-frameworks /cs/capabilities/sovereign-frameworks/ 301
+/cs/capabilities/systemic-reconstruction/index.html /cs/capabilities/systemic-reconstruction/ 301
+/cs/capabilities/causal-ai-backbone/index.html /cs/capabilities/causal-ai-backbone/ 301
+/cs/capabilities/entropy-elimination/index.html /cs/capabilities/entropy-elimination/ 301
+/cs/capabilities/sovereign-frameworks/index.html /cs/capabilities/sovereign-frameworks/ 301
+
+/de/capabilities/systemic-reconstruction /de/capabilities/systemic-reconstruction/ 301
+/de/capabilities/causal-ai-backbone /de/capabilities/causal-ai-backbone/ 301
+/de/capabilities/entropy-elimination /de/capabilities/entropy-elimination/ 301
+/de/capabilities/sovereign-frameworks /de/capabilities/sovereign-frameworks/ 301
+/de/capabilities/systemic-reconstruction/index.html /de/capabilities/systemic-reconstruction/ 301
+/de/capabilities/causal-ai-backbone/index.html /de/capabilities/causal-ai-backbone/ 301
+/de/capabilities/entropy-elimination/index.html /de/capabilities/entropy-elimination/ 301
+/de/capabilities/sovereign-frameworks/index.html /de/capabilities/sovereign-frameworks/ 301
+
+/uk/capabilities/systemic-reconstruction /uk/capabilities/systemic-reconstruction/ 301
+/uk/capabilities/causal-ai-backbone /uk/capabilities/causal-ai-backbone/ 301
+/uk/capabilities/entropy-elimination /uk/capabilities/entropy-elimination/ 301
+/uk/capabilities/sovereign-frameworks /uk/capabilities/sovereign-frameworks/ 301
+/uk/capabilities/systemic-reconstruction/index.html /uk/capabilities/systemic-reconstruction/ 301
+/uk/capabilities/causal-ai-backbone/index.html /uk/capabilities/causal-ai-backbone/ 301
+/uk/capabilities/entropy-elimination/index.html /uk/capabilities/entropy-elimination/ 301
+/uk/capabilities/sovereign-frameworks/index.html /uk/capabilities/sovereign-frameworks/ 301
+
+/zh/capabilities/systemic-reconstruction /zh/capabilities/systemic-reconstruction/ 301
+/zh/capabilities/causal-ai-backbone /zh/capabilities/causal-ai-backbone/ 301
+/zh/capabilities/entropy-elimination /zh/capabilities/entropy-elimination/ 301
+/zh/capabilities/sovereign-frameworks /zh/capabilities/sovereign-frameworks/ 301
+/zh/capabilities/systemic-reconstruction/index.html /zh/capabilities/systemic-reconstruction/ 301
+/zh/capabilities/causal-ai-backbone/index.html /zh/capabilities/causal-ai-backbone/ 301
+/zh/capabilities/entropy-elimination/index.html /zh/capabilities/entropy-elimination/ 301
+/zh/capabilities/sovereign-frameworks/index.html /zh/capabilities/sovereign-frameworks/ 301
