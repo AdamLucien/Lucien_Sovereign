@@ -141,6 +141,7 @@ Important:
 
 - Set:
   - `GEMINI_API_KEY=...`
+  - `GEMINI_MODEL=gemini-2.5-flash` (optional override)
 - Backward compatibility:
   - `VITE_GEMINI_API_KEY=...` is also accepted.
 - `.env` is ignored in `.gitignore`.

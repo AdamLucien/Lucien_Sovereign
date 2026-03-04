@@ -60,6 +60,12 @@ Set an environment variable for the `/api/gemini` function:
 GEMINI_API_KEY=your_api_key_here
 ```
 
+Optional:
+
+```bash
+GEMINI_MODEL=gemini-2.5-flash
+```
+
 Backward compatibility: `VITE_GEMINI_API_KEY` is also accepted.
 Without a key, the UI will still render, but the AI analysis response will show an error state.
 
