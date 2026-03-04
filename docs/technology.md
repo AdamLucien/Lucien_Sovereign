@@ -109,9 +109,9 @@ Lifecycle and effects:
 ## AI Diagnostic Panel
 
 - The AI audit feature calls Google Gemini via REST.
-- It requires `VITE_GEMINI_API_KEY` in `.env`.
+- It requires `GEMINI_API_KEY` in function environment variables.
 - Endpoint used in `App.jsx`:
-  - `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=...`
+  - `/api/gemini` (server-side function proxy).
 - If the key is missing, it displays an error in the UI.
 
 Request format:
@@ -119,7 +119,7 @@ Request format:
 - The prompt is crafted to return a 3-part diagnosis in the same language as the user input.
 
 Important:
-- This is client-side and exposes the API key to the browser. If security is required, move this to a backend.
+- The API key is used server-side in `/functions/api/gemini.js` and is not exposed to the browser.
 
 ## Forms and Modals
 
@@ -139,14 +139,16 @@ Important:
 
 ## Environment Variables
 
-- `.env` should contain:
-  - `VITE_GEMINI_API_KEY=...`
+- Set:
+  - `GEMINI_API_KEY=...`
+- Backward compatibility:
+  - `VITE_GEMINI_API_KEY=...` is also accepted.
 - `.env` is ignored in `.gitignore`.
 
 ## Deployment
 
-- This is a static frontend build.
-- Deploy `dist/` to any static host (Vercel, Netlify, Cloudflare Pages, GitHub Pages).
+- Core UI is a static frontend build.
+- AI and Stripe flows use `/api/*` functions, so deploy to a host that supports serverless/functions for those routes.
 
 ## Quality Notes / Known Gaps
 
@@ -154,4 +156,3 @@ Important:
 - `App.css` is unused.
 - Custom `fadeIn` animation keyframes are referenced but not defined in CSS.
 - All logic is in a single large component; refactoring into smaller components would improve maintainability.
-

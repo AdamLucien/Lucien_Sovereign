@@ -1,7 +1,9 @@
 export const onRequestPost = async ({ request, env }) => {
-  if (!env.GEMINI_API_KEY) {
+  const apiKey = env.GEMINI_API_KEY || env.VITE_GEMINI_API_KEY;
+
+  if (!apiKey) {
     return new Response(
-      JSON.stringify({ error: 'Missing GEMINI_API_KEY' }),
+      JSON.stringify({ error: 'Missing GEMINI_API_KEY (or VITE_GEMINI_API_KEY)' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
@@ -24,7 +26,7 @@ export const onRequestPost = async ({ request, env }) => {
   }
 
   const upstream = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${env.GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

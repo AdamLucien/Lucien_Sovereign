@@ -54,13 +54,14 @@ npm run preview
 
 ## Environment variables
 
-Create a local `.env` file if you want the AI diagnostic panel to function:
+Set an environment variable for the `/api/gemini` function:
 
 ```bash
-VITE_GEMINI_API_KEY=your_api_key_here
+GEMINI_API_KEY=your_api_key_here
 ```
 
-Without it, the UI will still render, but the AI analysis response will show an error state.
+Backward compatibility: `VITE_GEMINI_API_KEY` is also accepted.
+Without a key, the UI will still render, but the AI analysis response will show an error state.
 
 ## Project structure
 
@@ -81,10 +82,10 @@ All copy is defined in `src/App.jsx` under `CONTENT_MAP`. This is the single sou
 
 ## Deployment
 
-The build output is generated in `dist/`. Deploy it to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages).
+The build output is generated in `dist/`.
+If you want AI diagnostics and payments, deploy to a host with serverless/function support for `/api/*` (for example Cloudflare Pages Functions, Vercel Functions, or Netlify Functions).
 
 ## Notes
 
-- No backend required.
+- Core UI works as static frontend; AI diagnostics require the `/api/gemini` function.
 - Keep `.env` out of version control (already ignored in `.gitignore`).
-
